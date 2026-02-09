@@ -1,3 +1,6 @@
 {
-  "cSpell.words": ["eslintcache", "VITE"]
+  "cSpell.words": ["eslintcache", "VITE"],
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.requireConfig": true
 }
