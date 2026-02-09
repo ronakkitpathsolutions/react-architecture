@@ -1,73 +1,73 @@
-# React + TypeScript + Vite
+# React Architecture
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An opinionated Vite + React + TypeScript starter with Tailwind v4, shadcn-style UI primitives, and a clean, scalable `src/` layout.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React 19 + TypeScript
+- Vite (rolldown-vite)
+- Tailwind CSS v4 via `@tailwindcss/vite`
+- TanStack Query + TanStack Table
+- React Router
+- React Hook Form + Zod
+- UI primitives and utilities: Base UI, Radix, Vaul, cmdk, Sonner, Lucide
 
-## React Compiler
+## Project Structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```text
+src/
+  app.tsx
+  main.tsx
+  providers.tsx
+  assets/
+    icons/
+    images/
+    svgs/
+  components/
+    ui/
+  hooks/
+  layouts/
+  services/
+  utils/
+    constants/
+    functions/
+    validations/
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Aliases
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+- `@` maps to `src` (see `vite.config.ts`)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+## Getting Started
+
+```bash
+npm install
+npm run dev
 ```
+
+## Scripts
+
+- `npm run dev` starts the dev server
+- `npm run dev:stag` starts dev server in staging mode
+- `npm run dev:prod` starts dev server in production mode
+- `npm run build` runs type-check and builds for production
+- `npm run preview` previews the production build
+- `npm run lint` runs ESLint
+- `npm run lint:fix` runs ESLint with auto-fix
+- `npm run format` runs Prettier on the codebase
+- `npm run format:check` checks formatting without writing
+
+## Environment
+
+Environment variables are defined in `.env` files. Use `.env.example` as a reference:
+
+- `VITE_APP_ENV`
+- `VITE_DEBUG_MODE`
+- `VITE_PORT`
+- `VITE_API_URL`
+
+## Code Quality and Git Hooks
+
+- ESLint and Prettier are configured for linting and formatting.
+- Husky runs `lint-staged` on pre-commit.
+- Commit messages are enforced with commitlint (Conventional Commits).

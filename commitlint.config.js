@@ -18,6 +18,9 @@ const commitlintConfig = {
         'revert',
       ],
     ],
+
+    // increase header max length
+    'header-max-length': [2, 'always', 1500],
   },
 };
 
