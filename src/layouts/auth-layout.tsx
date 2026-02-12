@@ -2,7 +2,7 @@ import { Outlet } from 'react-router';
 
 const AuthLayout = () => {
   return (
-    <div className="w-full h-screen border border-dashed p-4">
+    <div className="w-full min-h-screen h-full border border-destructive p-4">
       <Outlet />
     </div>
   );

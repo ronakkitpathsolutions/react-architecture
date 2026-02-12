@@ -1,15 +1,20 @@
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
-export function cn(...inputs: ClassValue[]) {
+const cn = (...inputs: ClassValue[]) => {
   return twMerge(clsx(inputs));
-}
+};
 
-export const logError = (error: unknown): void => {
+const capitalize = (value: string): string => {
+  if (!value) return '';
+  return value.charAt(0).toUpperCase() + value.slice(1);
+};
+
+const logError = (error: unknown): void => {
   console.error('Error:', error);
 };
 
-export const errorHandler = <T>(
+const errorHandler = <T>(
   handleTry: () => T,
   handleCatch?: (error: unknown) => T | null,
   handleFinally?: () => void,
@@ -29,3 +34,5 @@ export const errorHandler = <T>(
     }
   }
 };
+
+export { cn, errorHandler, capitalize };
