@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router';
 
-const WebLayout = () => {
+const PublicLayout = () => {
   return (
     <div className="w-full">
       <Outlet />
@@ -8,4 +8,4 @@ const WebLayout = () => {
   );
 };
 
-export default WebLayout;
+export default PublicLayout;
