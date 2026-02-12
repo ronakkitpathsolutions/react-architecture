@@ -74,7 +74,6 @@ storybook-static/
 # Tailwind / shadcn
 ############################################
 .tailwind-cache/
-components.json
 
 ############################################
 # i18n / Localization
