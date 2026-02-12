@@ -46,10 +46,14 @@ type HttpMethod = (typeof METHODS)[HttpMethodKey];
 type ErrorMessageKey = keyof typeof ERROR_MESSAGES;
 type ErrorMessageValue = (typeof ERROR_MESSAGES)[ErrorMessageKey];
 
+type AsyncFn = (args: Record<string, unknown>) => Promise<unknown>;
+type ServiceGroup = {
+  [key: string]: AsyncFn | ServiceGroup;
+};
 type Services = {
-  auth: Record<string, unknown>;
-  admin: Record<string, unknown>;
-  web: Record<string, unknown>;
+  auth: ServiceGroup;
+  admin: ServiceGroup;
+  web: ServiceGroup;
 };
 
 export type {
@@ -67,4 +71,5 @@ export type {
   ErrorMessageKey,
   ErrorMessageValue,
   Services,
+  AsyncFn,
 };
