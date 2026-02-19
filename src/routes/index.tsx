@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router';
+import { createBrowserRouter, redirect } from 'react-router';
 
 // This is the public routes for web, you can add more routes here
 import Home from '@/pages/web/home';
@@ -25,14 +25,47 @@ import WebLayout from '@/layouts/web-layout';
 import AdminLayout from '@/layouts/admin-layout';
 import AuthLayout from '@/layouts/auth-layout';
 
+// This is the 404 page
+import PageNotFound from '@/pages/404';
+
 import {
   ADMIN_ROUTES,
   AUTH_ROUTES,
   GENERAL_ROUTES,
   WEB_ROUTES,
 } from './routes';
+import getAuth from '@/auth';
 
 // Loaders and Redirection is Remaining
+
+const authLayoutLoader = () => {
+  const { isAuthenticated, redirectUrl } = getAuth();
+  if (isAuthenticated) {
+    return redirect(redirectUrl);
+  }
+  return null;
+};
+
+const dashboardLayoutLoader = () => {
+  const { isAuthenticated, redirectUrl } = getAuth({
+    isCacheRedirection: true,
+  });
+
+  if (!isAuthenticated) {
+    return redirect(redirectUrl);
+  }
+  return null;
+};
+
+const dashboardPageLoader = (roles: string[]) => () => {
+  const { isAuthenticated, role } = getAuth();
+
+  if (isAuthenticated && !roles.includes(role)) {
+    return redirect('/404');
+  }
+
+  return null;
+};
 
 const router = createBrowserRouter([
   {
@@ -51,6 +84,7 @@ const router = createBrowserRouter([
   {
     ...AUTH_ROUTES.layout,
     Component: AuthLayout,
+    loader: authLayoutLoader,
     children: [
       { ...AUTH_ROUTES.login, Component: Login },
       { ...AUTH_ROUTES.register, Component: Register },
@@ -60,13 +94,31 @@ const router = createBrowserRouter([
   {
     ...ADMIN_ROUTES.layout,
     Component: AdminLayout,
+    loader: dashboardLayoutLoader,
     children: [
-      { ...ADMIN_ROUTES.dashboard, Component: Dashboard },
-      { ...ADMIN_ROUTES.profile, Component: Profile },
-      { ...ADMIN_ROUTES.user_management, Component: UserManagement },
-      { ...ADMIN_ROUTES.product_management, Component: ProductManagement },
+      {
+        ...ADMIN_ROUTES.dashboard,
+        Component: Dashboard,
+        loader: dashboardPageLoader(ADMIN_ROUTES.dashboard.roles),
+      },
+      {
+        ...ADMIN_ROUTES.profile,
+        Component: Profile,
+        loader: dashboardPageLoader(ADMIN_ROUTES.profile.roles),
+      },
+      {
+        ...ADMIN_ROUTES.user_management,
+        Component: UserManagement,
+        loader: dashboardPageLoader(ADMIN_ROUTES.user_management.roles),
+      },
+      {
+        ...ADMIN_ROUTES.product_management,
+        Component: ProductManagement,
+        loader: dashboardPageLoader(ADMIN_ROUTES.product_management.roles),
+      },
     ],
   },
+  { path: '*', Component: PageNotFound },
 ]);
 
 export default router;

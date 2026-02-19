@@ -1,5 +1,11 @@
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { jwtDecode } from 'jwt-decode';
+import type { JwtPayload } from 'jwt-decode';
+
+interface MyJwtPayload extends JwtPayload {
+  [key: string]: unknown;
+}
 
 const cn = (...inputs: ClassValue[]) => {
   return twMerge(clsx(inputs));
@@ -33,6 +39,27 @@ const errorHandler = <T>(
       handleFinally();
     }
   }
+};
+
+export const decodeToken = <T extends object = MyJwtPayload>(
+  token?: string | null,
+): T | null => {
+  if (!token) return null;
+
+  try {
+    return jwtDecode<T>(token);
+  } catch (error) {
+    logError(error);
+    return null;
+  }
+};
+
+export const isTokenActive = (token?: string | null): boolean => {
+  const decoded = decodeToken<MyJwtPayload>(token);
+  if (!decoded?.exp) return false;
+
+  const now = Math.floor(Date.now() / 1000);
+  return decoded.exp > now;
 };
 
 export { cn, errorHandler, capitalize };
