@@ -1,7 +1,7 @@
 import ThemeHeader from '@/components/ui/theme-header';
 import { Outlet } from 'react-router';
 
-const WebLayout = () => {
+const PublicLayout = () => {
   return (
     <div className="w-full">
       <ThemeHeader />
@@ -10,4 +10,4 @@ const WebLayout = () => {
   );
 };
 
-export default WebLayout;
+export default PublicLayout;

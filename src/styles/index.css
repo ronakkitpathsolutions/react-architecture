@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap');
 /* --------------------------------------------------
    Tailwind core
 -------------------------------------------------- */
@@ -10,6 +11,7 @@
    - Design tokens (radius, colors)
 -------------------------------------------------- */
 @theme {
+  --font-sans: 'Urbanist', system-ui, -apple-system, sans-serif;
   /* Breakpoints (Tailwind v4 way) */
   --breakpoint-3xl: 1920px;
   --breakpoint-4xl: 2560px;
@@ -143,8 +145,9 @@
   }
 
   body {
-    @apply bg-background text-foreground;
-    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    @apply bg-background text-foreground font-sans;
+    font-optical-sizing: auto;
+    font-style: normal;
     line-height: 1.5;
     font-weight: 400;
     text-rendering: optimizeLegibility;

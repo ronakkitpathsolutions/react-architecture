@@ -1,11 +1,29 @@
-import { Button } from './components/ui/button';
+import { TooltipProvider } from '@/components/ui/tooltip';
+import { RouterProvider } from 'react-router';
+import { DirectionProvider } from '@/components/ui/direction';
+import { Toaster } from '@/components/ui/sonner';
+import { ThemeProvider } from 'next-themes';
+import router from './routes';
+import AuthProvider from './auth/provider';
 
-const App = () => {
+const AppProviders = () => {
   return (
-    <div className="w-full h-screen flex items-center justify-center">
-      <Button>Hello, World!</Button>
-    </div>
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+    >
+      <DirectionProvider dir="ltr" direction="ltr">
+        <TooltipProvider delayDuration={100}>
+          <AuthProvider>
+            <RouterProvider router={router} />
+          </AuthProvider>
+          <Toaster position="top-right" />
+        </TooltipProvider>
+      </DirectionProvider>
+    </ThemeProvider>
   );
 };
 
-export default App;
+export default AppProviders;
