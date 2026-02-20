@@ -11,7 +11,6 @@ import {
   Badge,
   Button,
   ButtonGroup,
-  ButtonGroupText,
   Card,
   CardContent,
   CardDescription,
@@ -37,6 +36,7 @@ import {
   Textarea,
 } from '@/components/ui';
 import { toast } from 'sonner';
+import ICONS from '@/assets/icons';
 
 const UiKit = () => {
   const [checkboxStates, setCheckboxStates] = useState({
@@ -362,13 +362,12 @@ const UiKit = () => {
                           <Button variant="ghost">C</Button>
                         </ButtonGroup>
                         <ButtonGroup>
-                          <Button size="icon-sm">🔍</Button>
-                          <Button size="icon-sm">✚</Button>
-                        </ButtonGroup>
-                        <ButtonGroup>
-                          <ButtonGroupText asChild>
-                            <div className="px-3">Label</div>
-                          </ButtonGroupText>
+                          <Button size="icon-sm">
+                            <ICONS.Plus className="size-4" />
+                          </Button>
+                          <Button size="icon-sm">
+                            <ICONS.Minus className="size-4" />
+                          </Button>
                         </ButtonGroup>
                       </div>
                     </div>
