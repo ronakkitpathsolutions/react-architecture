@@ -1,10 +1,5 @@
 import { createRoot } from 'react-dom/client';
 import './styles/index.css';
-import App from './app';
-import AppProviders from '@/providers';
+import AppProviders from './app';
 
-createRoot(document.getElementById('root')!).render(
-  <AppProviders>
-    <App />
-  </AppProviders>,
-);
+createRoot(document.getElementById('root')!).render(<AppProviders />);
