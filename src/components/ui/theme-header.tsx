@@ -5,7 +5,7 @@ import ICONS from '@/assets/icons';
 const ThemeHeader = () => {
   const { theme, setTheme } = useTheme();
   return (
-    <div className="w-full min-h-16 border-b border-dashed flex justify-between items-center px-4">
+    <div className="w-full min-h-16 border-l border-r max-w-7xl mx-auto border-dashed flex justify-between items-center px-4">
       <div className="text-base font-medium">Logo</div>
       <Button
         variant="ghost"

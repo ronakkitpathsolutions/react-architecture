@@ -56,12 +56,14 @@ const UiKit = () => {
   return (
     <div className="w-full bg-background text-foreground">
       <div className="w-full">
-        <div className="py-12 text-center border-b border-dashed">
-          <h1 className="text-4xl font-bold mb-2">UI Kit</h1>
-          <p className="text-muted-foreground">
-            Comprehensive showcase of all core UI components with variants and
-            types
-          </p>
+        <div className="w-full border-b border-t border-dashed">
+          <div className="text-center py-12  max-w-7xl mx-auto border-dashed border-l border-r">
+            <h1 className="text-4xl font-bold mb-2">UI Kit</h1>
+            <p className="text-muted-foreground">
+              Comprehensive showcase of all core UI components with variants and
+              types
+            </p>
+          </div>
         </div>
         {/* Grid Layout 6:6 */}
         <div className="grid grid-cols-12 max-w-7xl mx-auto pb-12">
