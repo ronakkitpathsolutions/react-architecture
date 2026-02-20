@@ -10,6 +10,8 @@ import {
   AvatarImage,
   Badge,
   Button,
+  ButtonGroup,
+  ButtonGroupText,
   Card,
   CardContent,
   CardDescription,
@@ -22,8 +24,19 @@ import {
   Skeleton,
   Spinner,
   Switch,
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+  ToggleGroup,
+  ToggleGroupItem,
+  Tooltip,
+  TooltipProvider,
+  TooltipTrigger,
+  TooltipContent,
   Textarea,
 } from '@/components/ui';
+import { toast } from 'sonner';
 
 const UiKit = () => {
   const [checkboxStates, setCheckboxStates] = useState({
@@ -168,6 +181,282 @@ const UiKit = () => {
                       <Button size="icon">*</Button>
                       <Button size="icon-lg">#</Button>
                     </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </section>
+
+            {/* Tooltips Section */}
+            <section className="border-dashed border border-b-0 p-4">
+              <h2 className="text-2xl font-semibold mb-6">Tooltips</h2>
+              <Card className="border-0 rounded-none shadow-none">
+                <CardHeader>
+                  <CardTitle>Tooltip Examples</CardTitle>
+                  <CardDescription>Basic tooltip usages</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <TooltipProvider>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="flex items-center gap-3">
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Button variant="outline">Hover (bottom)</Button>
+                          </TooltipTrigger>
+                          <TooltipContent side="bottom">
+                            Bottom tooltip
+                          </TooltipContent>
+                        </Tooltip>
+
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Button variant="ghost">Right</Button>
+                          </TooltipTrigger>
+                          <TooltipContent side="right" sideOffset={6}>
+                            Right tooltip
+                          </TooltipContent>
+                        </Tooltip>
+                      </div>
+
+                      <div className="flex items-center gap-3">
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Button variant="secondary">Top</Button>
+                          </TooltipTrigger>
+                          <TooltipContent side="top" sideOffset={6}>
+                            Top tooltip
+                          </TooltipContent>
+                        </Tooltip>
+
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Button variant="link">Left</Button>
+                          </TooltipTrigger>
+                          <TooltipContent side="left" sideOffset={6}>
+                            Left tooltip
+                          </TooltipContent>
+                        </Tooltip>
+                      </div>
+                    </div>
+                  </TooltipProvider>
+                </CardContent>
+              </Card>
+            </section>
+
+            {/* Accordion Section */}
+            <section className="border-dashed border border-b-0 p-4">
+              <h2 className="text-2xl font-semibold mb-6">Accordion</h2>
+              <Card className="border-0 rounded-none shadow-none">
+                <CardHeader>
+                  <CardTitle>Accordion</CardTitle>
+                  <CardDescription>Simple accordion examples</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-medium mb-2">Default</h4>
+                      <details className="group border rounded-md p-3">
+                        <summary className="cursor-pointer select-none font-medium">
+                          Accordion item one
+                        </summary>
+                        <div className="mt-2 text-sm text-muted-foreground">
+                          This is the content for the first accordion item.
+                        </div>
+                      </details>
+                    </div>
+
+                    <div>
+                      <h4 className="font-medium mb-2">Compact</h4>
+                      <details className="group border rounded-md p-2 text-sm">
+                        <summary className="cursor-pointer select-none font-medium">
+                          Compact item
+                        </summary>
+                        <div className="mt-1 text-xs text-muted-foreground">
+                          Smaller padding and font for compact accordion.
+                        </div>
+                      </details>
+                    </div>
+
+                    <div>
+                      <h4 className="font-medium mb-2">Nested</h4>
+                      <details className="group border rounded-md p-3">
+                        <summary className="cursor-pointer select-none font-medium">
+                          Parent item
+                        </summary>
+                        <div className="mt-2 space-y-2">
+                          <p className="text-sm text-muted-foreground">
+                            Parent content
+                          </p>
+                          <details className="group border rounded-md p-2">
+                            <summary className="cursor-pointer select-none font-medium">
+                              Child item
+                            </summary>
+                            <div className="mt-1 text-sm text-muted-foreground">
+                              Nested content
+                            </div>
+                          </details>
+                        </div>
+                      </details>
+                    </div>
+
+                    <div>
+                      <h4 className="font-medium mb-2">Disabled</h4>
+                      <details
+                        className="group border rounded-md p-3 opacity-50 pointer-events-none"
+                        aria-disabled
+                      >
+                        <summary className="cursor-not-allowed select-none font-medium">
+                          Disabled item
+                        </summary>
+                        <div className="mt-2 text-sm text-muted-foreground">
+                          Disabled content
+                        </div>
+                      </details>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </section>
+
+            {/* Button Group Section */}
+            <section className="border-dashed border border-b-0 p-4">
+              <h2 className="text-2xl font-semibold mb-6">Button Group</h2>
+              <Card className="border-0 rounded-none shadow-none">
+                <CardHeader>
+                  <CardTitle>Button Group</CardTitle>
+                  <CardDescription>
+                    Grouped buttons and variants
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-col gap-4">
+                    <div>
+                      <h4 className="font-medium mb-2">Horizontal</h4>
+                      <div className="flex items-center gap-3">
+                        <ButtonGroup>
+                          <Button>Left</Button>
+                          <Button>Middle</Button>
+                          <Button>Right</Button>
+                        </ButtonGroup>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="font-medium mb-2">Vertical</h4>
+                      <div className="flex items-start gap-3">
+                        <ButtonGroup orientation="vertical">
+                          <Button>One</Button>
+                          <Button>Two</Button>
+                          <Button>Three</Button>
+                        </ButtonGroup>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="font-medium mb-2">Segmented</h4>
+                      <div className="flex items-center gap-3">
+                        <ButtonGroup>
+                          <Button variant="outline">A</Button>
+                          <Button>Center</Button>
+                          <Button variant="ghost">C</Button>
+                        </ButtonGroup>
+                        <ButtonGroup>
+                          <Button size="icon-sm">🔍</Button>
+                          <Button size="icon-sm">✚</Button>
+                        </ButtonGroup>
+                        <ButtonGroup>
+                          <ButtonGroupText asChild>
+                            <div className="px-3">Label</div>
+                          </ButtonGroupText>
+                        </ButtonGroup>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </section>
+
+            {/* Notifications (Sonner) Section */}
+            <section className="border-dashed border border-b-0 p-4">
+              <h2 className="text-2xl font-semibold mb-6">Notifications</h2>
+              <Card className="border-0 rounded-none shadow-none">
+                <CardHeader>
+                  <CardTitle>Toasts</CardTitle>
+                  <CardDescription>Sonner toaster examples</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex items-center gap-3">
+                    <Button onClick={() => toast('Default message')}>
+                      Toast
+                    </Button>
+                    <Button onClick={() => toast.success('Success message')}>
+                      Success
+                    </Button>
+                    <Button onClick={() => toast.info('Info message')}>
+                      Info
+                    </Button>
+                    <Button onClick={() => toast.warning('Warning message')}>
+                      Warning
+                    </Button>
+                    <Button onClick={() => toast.error('Error message')}>
+                      Error
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </section>
+
+            {/* Tabs Section */}
+            <section className="border-dashed border border-b-0 p-4">
+              <h2 className="text-2xl font-semibold mb-6">Tabs</h2>
+              <Card className="border-0 rounded-none shadow-none">
+                <CardHeader>
+                  <CardTitle>Tabs</CardTitle>
+                  <CardDescription>
+                    Tab list and content examples
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="max-w-md">
+                    <Tabs defaultValue="tab1">
+                      <TabsList>
+                        <TabsTrigger value="tab1">Tab 1</TabsTrigger>
+                        <TabsTrigger value="tab2">Tab 2</TabsTrigger>
+                      </TabsList>
+                      <div className="mt-3">
+                        <TabsContent value="tab1">
+                          Content for tab one.
+                        </TabsContent>
+                        <TabsContent value="tab2">
+                          Content for tab two.
+                        </TabsContent>
+                      </div>
+                    </Tabs>
+                  </div>
+                </CardContent>
+              </Card>
+            </section>
+
+            {/* Toggle Group Section */}
+            <section className="border-dashed border border-b-0 p-4">
+              <h2 className="text-2xl font-semibold mb-6">Toggle Group</h2>
+              <Card className="border-0 rounded-none shadow-none">
+                <CardHeader>
+                  <CardTitle>Toggle Group</CardTitle>
+                  <CardDescription>Grouped toggle examples</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex items-center gap-3">
+                    <ToggleGroup
+                      type="single"
+                      defaultValue="bold"
+                      aria-label="Text formatting"
+                    >
+                      <ToggleGroupItem value="bold">Bold</ToggleGroupItem>
+                      <ToggleGroupItem value="italic">Italic</ToggleGroupItem>
+                      <ToggleGroupItem value="underline">
+                        Underline
+                      </ToggleGroupItem>
+                    </ToggleGroup>
                   </div>
                 </CardContent>
               </Card>
