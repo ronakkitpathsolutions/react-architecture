@@ -14,7 +14,7 @@ const AuthLayout = () => {
       {/* Right Panel */}
       <div className="w-full md:w-1/3 flex items-center justify-center p-8 bg-background">
         <div className="w-full max-w-md">
-          <div className="flex items-center gap-2 mb-8">BRAND LOGO</div>
+          <div className="flex items-center gap-2 mb-8">Logo</div>
           <Outlet />
         </div>
       </div>

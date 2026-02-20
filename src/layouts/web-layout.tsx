@@ -5,7 +5,11 @@ const WebLayout = () => {
   return (
     <div className="w-full">
       <ThemeHeader />
-      <Outlet />
+      <div className="w-full border-dashed border-t">
+        <div className="w-full max-w-7xl mx-auto border-dashed border-l border-r">
+          <Outlet />
+        </div>
+      </div>
     </div>
   );
 };

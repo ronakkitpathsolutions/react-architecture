@@ -1,11 +1,21 @@
 import { useTheme } from 'next-themes';
 import { Button } from './button';
 import ICONS from '@/assets/icons';
+import { cn } from '@/utils/functions';
 
-const ThemeHeader = () => {
+type ThemeHeaderProps = {
+  className?: string;
+};
+
+const ThemeHeader = ({ className }: ThemeHeaderProps) => {
   const { theme, setTheme } = useTheme();
   return (
-    <div className="w-full min-h-16 border-b border-dashed flex justify-between items-center px-4">
+    <div
+      className={cn(
+        'w-full min-h-16 border-l border-r max-w-7xl mx-auto border-dashed flex justify-between items-center px-4',
+        className,
+      )}
+    >
       <div className="text-base font-medium">Logo</div>
       <Button
         variant="ghost"
