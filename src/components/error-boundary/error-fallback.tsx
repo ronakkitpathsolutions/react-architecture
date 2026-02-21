@@ -20,7 +20,7 @@ const ErrorFallback = ({ error, resetErrorBoundary }: FallbackProps) => {
   const err = error instanceof Error ? error : new Error(String(error));
 
   return (
-    <Card className="mx-auto my-8 max-w-lg border-destructive/50">
+    <Card className="w-full my-8 max-w-lg border-destructive/50">
       <CardHeader>
         <CardTitle className="text-destructive">Something went wrong</CardTitle>
         <CardDescription>
