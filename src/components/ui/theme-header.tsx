@@ -12,7 +12,7 @@ const ThemeHeader = ({ className }: ThemeHeaderProps) => {
   return (
     <div
       className={cn(
-        'w-full min-h-16 border-l border-r max-w-7xl mx-auto border-dashed flex justify-between items-center px-4',
+        'w-full min-h-16 border-s border-e max-w-7xl mx-auto border-dashed flex justify-between items-center px-4',
         className,
       )}
     >

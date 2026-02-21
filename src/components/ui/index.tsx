@@ -1,4 +1,3 @@
-// Alert Dialog
 export * from './alert-dialog';
 
 // Alert
