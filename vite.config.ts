@@ -7,7 +7,17 @@ import path from 'path';
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss(), svgr(), visualizer({ open: true })],
+  plugins: [
+    react(),
+    tailwindcss(),
+    svgr(),
+    visualizer({
+      open: true, // Automatically opens browser
+      gzipSize: true, // Shows gzip size
+      brotliSize: true, // Shows brotli size
+      filename: 'dist/stats.html', // Output file
+    }),
+  ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
