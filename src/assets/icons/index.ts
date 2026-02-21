@@ -6,6 +6,7 @@ import {
   MoonIcon,
   PlusIcon,
   MinusIcon,
+  ArrowRightIcon,
 } from 'lucide-react';
 
 const ICONS = {
@@ -16,6 +17,7 @@ const ICONS = {
   Moon: MoonIcon,
   Plus: PlusIcon,
   Minus: MinusIcon,
+  ArrowRight: ArrowRightIcon,
 };
 
 export default ICONS;

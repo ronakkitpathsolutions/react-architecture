@@ -98,6 +98,108 @@ Environment variables are defined in `.env` files. Use `.env.example` as a refer
 
 ---
 
+## 📦 Bun Configuration
+
+This project uses [Bun](https://bun.sh) as the JavaScript runtime and package manager. Configuration is defined in `bunfig.toml`:
+
+```toml
+[install]
+# Use the lockfile for deterministic installs
+saveTextLockfile = true
+
+[install.cache]
+# Enable global cache for faster installs
+disable = false
+
+[run]
+# Silence lifecycle scripts output
+silent = false
+```
+
+**Key options:**
+
+| Option                          | Description                                                  |
+| ------------------------------- | ------------------------------------------------------------ |
+| `install.saveTextLockfile`      | Generates a human-readable text lockfile for reproducibility |
+| `install.cache.disable = false` | Leverages Bun's global cache to speed up repeated installs   |
+| `run.silent`                    | Controls whether lifecycle script output is printed          |
+
+> You can use `bun install` and `bun run dev` as drop-in replacements for `npm install` / `npm run dev`.
+
+---
+
+## ⚡ Build Optimization
+
+### Bundle Visualization
+
+The build pipeline includes [`rollup-plugin-visualizer`](https://github.com/btd/rollup-plugin-visualizer) to generate an interactive treemap of your production bundle. After running a build, a report is automatically opened in your browser:
+
+```ts
+// vite.config.ts
+visualizer({
+  open: true, // Automatically opens browser
+  gzipSize: true, // Shows gzip size
+  brotliSize: true, // Shows brotli size
+  filename: 'dist/stats.html', // Output file
+});
+```
+
+Run `bun run build` (or `npm run build`) and inspect `dist/stats.html` to identify large dependencies and optimize accordingly.
+
+### Manual Chunks
+
+To keep bundle sizes predictable and leverage browser caching, vendor dependencies are split into logical chunks via `rollupOptions.output.manualChunks`:
+
+| Chunk Name   | Includes                                         |
+| ------------ | ------------------------------------------------ |
+| `react-core` | `react`, `react-dom`                             |
+| `router`     | `react-router`                                   |
+| `tanstack`   | `@tanstack/react-query`, `@tanstack/react-table` |
+| `forms`      | `react-hook-form`, `@hookform/resolvers`         |
+| `ui-system`  | `@base-ui`, `radix-ui`, `vaul`, `cmdk`           |
+| `validation` | `zod`                                            |
+| `date-utils` | `date-fns`                                       |
+| `icons`      | `lucide-react`                                   |
+| `vendor`     | All other `node_modules` dependencies            |
+
+The chunk size warning limit is set to **800 kB** (`chunkSizeWarningLimit: 800`).
+
+```ts
+// vite.config.ts (simplified)
+build: {
+  chunkSizeWarningLimit: 800,
+  rollupOptions: {
+    output: {
+      manualChunks(id) {
+        if (!id.includes('node_modules')) return;
+
+        if (id.includes('react'))          return 'react-core';
+        if (id.includes('react-router'))   return 'router';
+        if (id.includes('@tanstack'))      return 'tanstack';
+        if (id.includes('react-hook-form') || id.includes('@hookform'))
+                                           return 'forms';
+        if (id.includes('@base-ui') || id.includes('radix-ui')
+            || id.includes('vaul') || id.includes('cmdk'))
+                                           return 'ui-system';
+        if (id.includes('zod'))            return 'validation';
+        if (id.includes('date-fns'))       return 'date-utils';
+        if (id.includes('lucide-react'))   return 'icons';
+
+        return 'vendor';
+      },
+    },
+  },
+}
+```
+
+**Benefits:**
+
+- **Better caching** — Rarely-changing vendors (React, Radix) are cached separately from frequently-changing app code.
+- **Parallel loading** — Smaller, named chunks can be fetched in parallel by the browser.
+- **Easier debugging** — The visualizer report makes it straightforward to spot bloated dependencies.
+
+---
+
 ## 🧹 Code Quality and Git Hooks
 
 - ESLint and Prettier for linting and formatting
