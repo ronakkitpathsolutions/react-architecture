@@ -13,6 +13,7 @@ An opinionated Vite + React + TypeScript starter with Tailwind v4, shadcn-style 
 - TanStack Query & Table for data fetching and tables
 - React Router for routing
 - React Hook Form & Zod for forms and validation
+- Error boundaries (global + component-level) with ShadCN fallback UI
 - Scalable, clean project structure
 - Pre-configured ESLint, Prettier, Husky, lint-staged, and commitlint
 - Environment variable support
@@ -21,18 +22,19 @@ An opinionated Vite + React + TypeScript starter with Tailwind v4, shadcn-style 
 
 ## 🛠️ Tech Stack
 
-| Category      | Stack/Library                              |
-| ------------- | ------------------------------------------ |
-| Framework     | React 19, TypeScript                       |
-| Build Tool    | Vite (rolldown-vite)                       |
-| Styling       | Tailwind CSS v4, shadcn/ui                 |
-| UI Primitives | Radix, Base UI, Sonner, Lucide, Vaul, cmdk |
-| Data Fetching | TanStack Query                             |
-| Tables        | TanStack Table                             |
-| Routing       | React Router                               |
-| Forms         | React Hook Form, Zod                       |
-| Lint/Format   | ESLint, Prettier                           |
-| Git Hooks     | Husky, lint-staged, commitlint             |
+| Category       | Stack/Library                              |
+| -------------- | ------------------------------------------ |
+| Framework      | React 19, TypeScript                       |
+| Build Tool     | Vite (rolldown-vite)                       |
+| Styling        | Tailwind CSS v4, shadcn/ui                 |
+| UI Primitives  | Radix, Base UI, Sonner, Lucide, Vaul, cmdk |
+| Data Fetching  | TanStack Query                             |
+| Tables         | TanStack Table                             |
+| Routing        | React Router                               |
+| Forms          | React Hook Form, Zod                       |
+| Error Handling | react-error-boundary                       |
+| Lint/Format    | ESLint, Prettier                           |
+| Git Hooks      | Husky, lint-staged, commitlint             |
 
 ---
 
@@ -48,6 +50,13 @@ src/
     images/
   auth/
   components/
+    error-boundary/
+      index.ts
+      global-error-boundary.tsx
+      component-error-boundary.tsx
+      error-fallback.tsx
+      global-error-fallback.tsx
+      error-logger.ts
     ui/
   hooks/
   layouts/
@@ -63,6 +72,7 @@ src/
       login/
       register/
       reset-password/
+    error/
     web/
       home/
       privacy-policy/
@@ -218,6 +228,48 @@ build: {
 - **Better caching** — Rarely-changing vendors (React, Radix) are cached separately from frequently-changing app code.
 - **Parallel loading** — Smaller, named chunks can be fetched in parallel by the browser.
 - **Easier debugging** — The visualizer report makes it straightforward to spot bloated dependencies.
+
+---
+
+## 🛡️ Error Handling
+
+The project includes a two-tier error boundary system powered by [`react-error-boundary`](https://github.com/bvaughn/react-error-boundary):
+
+### Global Error Boundary
+
+Wraps the entire application in `main.tsx`. Catches any unhandled error and renders a full-page fallback UI.
+
+```tsx
+// main.tsx
+<GlobalErrorBoundary>
+  <AppProviders />
+</GlobalErrorBoundary>
+```
+
+### Component Error Boundary
+
+Isolate errors at the section/widget level so one broken component doesn't crash the whole app:
+
+```tsx
+import { ComponentErrorBoundary } from '@/components/error-boundary';
+
+<ComponentErrorBoundary name="Revenue Chart">
+  <RevenueChart />
+</ComponentErrorBoundary>;
+```
+
+### Files
+
+| File                           | Purpose                                                         |
+| ------------------------------ | --------------------------------------------------------------- |
+| `global-error-boundary.tsx`    | Root-level boundary (wraps entire app)                          |
+| `component-error-boundary.tsx` | Reusable boundary for sections/widgets                          |
+| `error-fallback.tsx`           | Compact Card-based ShadCN fallback for component errors         |
+| `global-error-fallback.tsx`    | Full-page ShadCN fallback for critical/global errors            |
+| `error-logger.ts`              | Centralized `onError` handler (plug in Sentry, LogRocket, etc.) |
+| `pages/error/index.tsx`        | Standalone error page for route-level error states              |
+
+> In development mode, error details (name + message) are displayed in the fallback UI for easier debugging.
 
 ---
 
