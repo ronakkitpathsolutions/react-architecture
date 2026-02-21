@@ -12,7 +12,7 @@ const Home = () => {
           Welcome to the React Architecture
           <span className="ml-2 dark:text-cyan-600 text-cyan-500">2.0</span>
         </h1>
-        <div className="flex items-center justify-center gap-3">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-3">
           <Button size="lg" onClick={() => navigate('/ui-kit')}>
             Explore UI Components
             <ICONS.ArrowRight className="size-4" />
