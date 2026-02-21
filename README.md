@@ -42,17 +42,38 @@ An opinionated Vite + React + TypeScript starter with Tailwind v4, shadcn-style 
 src/
   app.tsx
   main.tsx
-  providers.tsx
+  vite-env.d.ts
   assets/
     icons/
     images/
-    svgs/
+  auth/
   components/
     ui/
   hooks/
   layouts/
+  pages/
+    404/
+    admin/
+      dashboard/
+      product-management/
+      profile/
+      user-management/
+    auth/
+      forgot-password/
+      login/
+      register/
+      reset-password/
+    web/
+      home/
+      privacy-policy/
+      terms-of-services/
+      ui-kit/
+  routes/
   services/
+  styles/
+  types/
   utils/
+    configs/
     constants/
     functions/
     validations/
@@ -67,23 +88,23 @@ src/
 ## 🏁 Getting Started
 
 ```bash
-npm install
-npm run dev
+bun install
+bun run dev
 ```
 
 ---
 
 ## 📜 Scripts
 
-- `npm run dev` — start the dev server
-- `npm run dev:stag` — dev server in staging mode
-- `npm run dev:prod` — dev server in production mode
-- `npm run build` — type-check and build for production
-- `npm run preview` — preview the production build
-- `npm run lint` — run ESLint
-- `npm run lint:fix` — ESLint with auto-fix
-- `npm run format` — run Prettier
-- `npm run format:check` — check formatting
+- `bun run dev` — start the dev server
+- `bun run dev:stag` — dev server in staging mode
+- `bun run dev:prod` — dev server in production mode
+- `bun run build` — type-check and build for production
+- `bun run preview` — preview the production build
+- `bun run lint` — run ESLint
+- `bun run lint:fix` — ESLint with auto-fix
+- `bun run format` — run Prettier
+- `bun run format:check` — check formatting
 
 ---
 
@@ -124,7 +145,7 @@ silent = false
 | `install.cache.disable = false` | Leverages Bun's global cache to speed up repeated installs   |
 | `run.silent`                    | Controls whether lifecycle script output is printed          |
 
-> You can use `bun install` and `bun run dev` as drop-in replacements for `npm install` / `npm run dev`.
+> Use `bun install` to install dependencies and `bun run dev` to start the dev server.
 
 ---
 
@@ -144,7 +165,7 @@ visualizer({
 });
 ```
 
-Run `bun run build` (or `npm run build`) and inspect `dist/stats.html` to identify large dependencies and optimize accordingly.
+Run `bun run build` and inspect `dist/stats.html` to identify large dependencies and optimize accordingly.
 
 ### Manual Chunks
 
