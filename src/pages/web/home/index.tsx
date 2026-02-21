@@ -12,10 +12,20 @@ const Home = () => {
           Welcome to the React Architecture
           <span className="ml-2 dark:text-cyan-600 text-cyan-500">2.0</span>
         </h1>
-        <Button size="lg" onClick={() => navigate('/ui-kit')}>
-          Explore UI Components
-          <ICONS.ArrowRight className="size-4" />
-        </Button>
+        <div className="flex items-center justify-center gap-3">
+          <Button size="lg" onClick={() => navigate('/ui-kit')}>
+            Explore UI Components
+            <ICONS.ArrowRight className="size-4" />
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            onClick={() => navigate('/error-boundary')}
+          >
+            Explore Error Boundary
+            <ICONS.ArrowRight className="size-4" />
+          </Button>
+        </div>
       </div>
     </div>
   );
