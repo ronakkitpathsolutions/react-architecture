@@ -26,6 +26,10 @@ const GENERAL_ROUTES = {
     path: '/ui-kit',
     title: 'UI Kit',
   },
+  error_boundary: {
+    path: '/error-boundary',
+    title: 'Error Boundary',
+  },
 };
 
 const WEB_ROUTES = {

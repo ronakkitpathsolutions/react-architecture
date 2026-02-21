@@ -7,6 +7,7 @@ import TermsOfServices from '@/pages/web/terms-of-services';
 
 // This is the common UI component for all pages
 import UiKit from '@/pages/web/ui-kit';
+import ErrorBoundaryDemo from '@/pages/web/error-boundary';
 
 // Authentication routes
 import Login from '@/pages/auth/login';
@@ -70,7 +71,10 @@ const dashboardPageLoader = (roles: string[]) => () => {
 const router = createBrowserRouter([
   {
     Component: PublicLayout,
-    children: [{ ...GENERAL_ROUTES.ui_kit, Component: UiKit }],
+    children: [
+      { ...GENERAL_ROUTES.ui_kit, Component: UiKit },
+      { ...GENERAL_ROUTES.error_boundary, Component: ErrorBoundaryDemo },
+    ],
   },
   {
     ...WEB_ROUTES.layout,
