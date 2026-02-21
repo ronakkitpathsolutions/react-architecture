@@ -1,4 +1,6 @@
 import { TooltipProvider } from '@/components/ui/tooltip';
+import { Analytics } from '@vercel/analytics/react';
+import { GlobalErrorBoundary } from '@/components/error-boundary';
 import { RouterProvider } from 'react-router';
 import { DirectionProvider } from '@/components/ui/direction';
 import { Toaster } from '@/components/ui/sonner';
@@ -16,10 +18,15 @@ const AppProviders = () => {
     >
       <DirectionProvider dir="ltr" direction="ltr">
         <TooltipProvider delayDuration={100}>
-          <AuthProvider>
-            <RouterProvider router={router} />
-          </AuthProvider>
+          <GlobalErrorBoundary>
+            <AuthProvider>
+              <RouterProvider router={router} />
+            </AuthProvider>
+          </GlobalErrorBoundary>
+
+          {/* Global UI utilities */}
           <Toaster position="top-right" />
+          <Analytics />
         </TooltipProvider>
       </DirectionProvider>
     </ThemeProvider>
