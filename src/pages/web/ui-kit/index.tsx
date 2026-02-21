@@ -385,7 +385,7 @@ const UiKit = () => {
                   <CardDescription>Sonner toaster examples</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex items-center gap-3">
+                  <div className="flex flex-wrap items-center gap-3">
                     <Button onClick={() => toast('Default message')}>
                       Toast
                     </Button>
