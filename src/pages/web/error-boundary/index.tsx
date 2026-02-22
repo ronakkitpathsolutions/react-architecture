@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { AlertCircle, Bug, ShieldAlert, ShieldCheck } from 'lucide-react';
+import ICONS from '@/assets/icons';
 
 // ─── Buggy component that throws on demand ─────────────────
 const BuggyCounter = () => {
@@ -25,7 +25,7 @@ const BuggyCounter = () => {
     <Card className="w-full">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <Bug className="size-5 text-destructive" />
+          <ICONS.Bug className="size-5 text-destructive" />
           Buggy Counter
         </CardTitle>
         <CardDescription>
@@ -49,7 +49,7 @@ const SafeWidget = () => {
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <ShieldCheck className="size-5 text-green-600" />
+          <ICONS.ShieldCheck className="size-5 text-green-600" />
           Safe Widget
         </CardTitle>
         <CardDescription>
@@ -95,7 +95,7 @@ const ErrorBoundaryDemo = () => {
 
           {/* How it works */}
           <Alert>
-            <ShieldAlert className="size-4" />
+            <ICONS.ShieldAlert className="size-4" />
             <AlertTitle>How it works</AlertTitle>
             <AlertDescription className="mt-1 space-y-1 text-sm">
               <p>
@@ -124,7 +124,7 @@ const ErrorBoundaryDemo = () => {
 
           {/* Instructions */}
           <Alert variant="destructive">
-            <AlertCircle className="size-4" />
+            <ICONS.AlertCircle className="size-4" />
             <AlertTitle>Try it out</AlertTitle>
             <AlertDescription className="mt-1 text-sm">
               Click <strong>"Increment"</strong> until the counter reaches 3.

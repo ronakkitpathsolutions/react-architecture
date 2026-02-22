@@ -1,13 +1,29 @@
 <!doctype html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>react-architecture</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<html lang="en">
+
+<head>
+  <meta charset=" UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>react-architecture</title>
+  <script>
+    (function () {
+      var stored = localStorage.getItem('i18nextLng') || '';
+      // Strip region codes: 'en-US' → 'en', 'fr-FR' → 'fr'
+      var lang = stored.split('-')[0].toLowerCase();
+      var supported = ['en', 'fr', 'ar'];
+      if (supported.indexOf(lang) === -1) lang = 'en';
+      var rtlLangs = ['ar', 'he'];
+      var dir = rtlLangs.indexOf(lang) !== -1 ? 'rtl' : 'ltr';
+      document.documentElement.setAttribute('dir', dir);
+      document.documentElement.setAttribute('lang', lang);
+    })();
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
 </html>

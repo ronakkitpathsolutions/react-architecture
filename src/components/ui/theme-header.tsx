@@ -2,6 +2,8 @@ import { useTheme } from 'next-themes';
 import { Button } from './button';
 import ICONS from '@/assets/icons';
 import { cn } from '@/utils/functions';
+import LanguageSelector from '@/components/language-selector';
+import useT from '@/hooks/use-translation';
 
 type ThemeHeaderProps = {
   className?: string;
@@ -9,6 +11,7 @@ type ThemeHeaderProps = {
 
 const ThemeHeader = ({ className }: ThemeHeaderProps) => {
   const { theme, setTheme } = useTheme();
+  const t = useT('common');
   return (
     <div
       className={cn(
@@ -16,18 +19,21 @@ const ThemeHeader = ({ className }: ThemeHeaderProps) => {
         className,
       )}
     >
-      <div className="text-base font-medium">Logo</div>
-      <Button
-        variant="ghost"
-        size="icon"
-        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      >
-        {theme === 'dark' ? (
-          <ICONS.Sun className="size-4" />
-        ) : (
-          <ICONS.Moon className="size-4" />
-        )}
-      </Button>
+      <div className="text-base font-medium">{t('logo')}</div>
+      <div className="flex items-center gap-1">
+        <LanguageSelector />
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+        >
+          {theme === 'dark' ? (
+            <ICONS.Sun className="size-4" />
+          ) : (
+            <ICONS.Moon className="size-4" />
+          )}
+        </Button>
+      </div>
     </div>
   );
 };

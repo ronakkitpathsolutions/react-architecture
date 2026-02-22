@@ -3,15 +3,17 @@
 import * as React from 'react';
 import { Direction } from 'radix-ui';
 
+type Dir = 'ltr' | 'rtl';
+
 function DirectionProvider({
   dir,
-  direction,
   children,
-}: React.ComponentProps<typeof Direction.DirectionProvider> & {
-  direction?: React.ComponentProps<typeof Direction.DirectionProvider>['dir'];
+}: {
+  dir: Dir;
+  children: React.ReactNode;
 }) {
   return (
-    <Direction.DirectionProvider dir={direction ?? dir}>
+    <Direction.DirectionProvider dir={dir}>
       {children}
     </Direction.DirectionProvider>
   );
@@ -20,3 +22,4 @@ function DirectionProvider({
 const useDirection = Direction.useDirection;
 
 export { DirectionProvider, useDirection };
+export type { Dir };

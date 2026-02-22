@@ -5,10 +5,15 @@ import { RouterProvider } from 'react-router';
 import { DirectionProvider } from '@/components/ui/direction';
 import { Toaster } from '@/components/ui/sonner';
 import { ThemeProvider } from 'next-themes';
+import { useTranslation } from 'react-i18next';
+import { getDirection } from '@/i18n';
 import router from './routes';
 import AuthProvider from './auth/provider';
 
 const AppProviders = () => {
+  const { i18n } = useTranslation();
+  const dir = getDirection(i18n.language);
+
   return (
     <ThemeProvider
       attribute="class"
@@ -16,7 +21,7 @@ const AppProviders = () => {
       enableSystem
       disableTransitionOnChange
     >
-      <DirectionProvider dir="ltr" direction="ltr">
+      <DirectionProvider dir={dir}>
         <TooltipProvider delayDuration={100}>
           <GlobalErrorBoundary>
             <AuthProvider>
@@ -25,7 +30,10 @@ const AppProviders = () => {
           </GlobalErrorBoundary>
 
           {/* Global UI utilities */}
-          <Toaster position="top-right" />
+          <Toaster
+            position={dir === 'rtl' ? 'top-left' : 'top-right'}
+            dir={dir}
+          />
           <Analytics />
         </TooltipProvider>
       </DirectionProvider>

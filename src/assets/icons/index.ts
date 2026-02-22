@@ -7,6 +7,10 @@ import {
   PlusIcon,
   MinusIcon,
   ArrowRightIcon,
+  AlertCircle,
+  Bug,
+  ShieldAlert,
+  ShieldCheck,
 } from 'lucide-react';
 
 const ICONS = {
@@ -18,6 +22,10 @@ const ICONS = {
   Plus: PlusIcon,
   Minus: MinusIcon,
   ArrowRight: ArrowRightIcon,
+  AlertCircle,
+  Bug,
+  ShieldAlert,
+  ShieldCheck,
 };
 
 export default ICONS;
