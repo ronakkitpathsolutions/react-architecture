@@ -4,11 +4,26 @@ import { useState } from 'react';
 import {
   Alert,
   AlertDescription,
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
   AlertTitle,
   Avatar,
   AvatarFallback,
   AvatarImage,
   Badge,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
   Button,
   ButtonGroup,
   Card,
@@ -17,23 +32,68 @@ import {
   CardHeader,
   CardTitle,
   Checkbox,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
   Input,
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSeparator,
+  InputOTPSlot,
   Label,
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
   Progress,
+  RadioGroup,
+  RadioGroupItem,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Separator,
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
   Skeleton,
+  Slider,
   Spinner,
   Switch,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
   Tabs,
+  TabsContent,
   TabsList,
   TabsTrigger,
-  TabsContent,
+  Textarea,
   ToggleGroup,
   ToggleGroupItem,
   Tooltip,
+  TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-  TooltipContent,
-  Textarea,
 } from '@/components/ui';
 import { toast } from 'sonner';
 import ICONS from '@/assets/icons';
@@ -52,6 +112,7 @@ const UiKit = () => {
 
   const [inputValue, setInputValue] = useState('');
   const [textareaValue, setTextareaValue] = useState('');
+  const [sliderValue, setSliderValue] = useState([50]);
 
   return (
     <div className="w-full bg-background text-foreground">
@@ -639,7 +700,7 @@ const UiKit = () => {
             </section>
 
             {/* Switches Section */}
-            <section className="border-dashed border border-b p-4">
+            <section className="border-dashed border border-b-0 p-4">
               <h2 className="text-2xl font-semibold mb-6">Switches</h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
@@ -695,10 +756,64 @@ const UiKit = () => {
                 </CardContent>
               </Card>
             </section>
+
+            {/* Select Section */}
+            <section className="border-dashed border border-b p-4">
+              <h2 className="text-2xl font-semibold mb-6">Select</h2>
+              <Card className="border-0 rounded-none shadow-none">
+                <CardHeader>
+                  <CardTitle>Select Components</CardTitle>
+                  <CardDescription>
+                    Dropdown select menus with different options
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6 max-w-md">
+                  <div>
+                    <Label>Default Select</Label>
+                    <Select>
+                      <SelectTrigger className="mt-2">
+                        <SelectValue placeholder="Select an option" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="option1">Option 1</SelectItem>
+                        <SelectItem value="option2">Option 2</SelectItem>
+                        <SelectItem value="option3">Option 3</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div>
+                    <Label>Small Select</Label>
+                    <Select>
+                      <SelectTrigger size="sm" className="mt-2">
+                        <SelectValue placeholder="Small select" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="a">Choice A</SelectItem>
+                        <SelectItem value="b">Choice B</SelectItem>
+                        <SelectItem value="c">Choice C</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div>
+                    <Label>Disabled Select</Label>
+                    <Select disabled>
+                      <SelectTrigger className="mt-2">
+                        <SelectValue placeholder="Disabled" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="x">Item X</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </CardContent>
+              </Card>
+            </section>
           </div>
           <div className="col-span-12 md:col-span-6">
             {/* Avatars Section */}
-            <section className="border-dashed border border-l-0 border-t-0 border-b-0 p-4">
+            <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-t-0 border-b-0 p-4">
               <h2 className="text-2xl font-semibold mb-6">Avatars</h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
@@ -779,7 +894,7 @@ const UiKit = () => {
             </section>
 
             {/* Alerts Section */}
-            <section className="border-dashed border border-l-0 border-b-0 p-4">
+            <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-b-0 p-4">
               <h2 className="text-2xl font-semibold mb-6">Alerts</h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
@@ -808,7 +923,7 @@ const UiKit = () => {
             </section>
 
             {/* Progress Section */}
-            <section className="border-dashed border border-l-0 border-b-0 p-4">
+            <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-b-0 p-4">
               <h2 className="text-2xl font-semibold mb-6">Progress</h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
@@ -845,7 +960,7 @@ const UiKit = () => {
             </section>
 
             {/* Loaders Section */}
-            <section className="border-dashed border border-l-0 border-b-0 p-4">
+            <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-b-0 p-4">
               <h2 className="text-2xl font-semibold mb-6">
                 Loaders & Skeletons
               </h2>
@@ -889,8 +1004,329 @@ const UiKit = () => {
               </Card>
             </section>
 
+            {/* Dialog Section */}
+            <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-b-0 p-4">
+              <h2 className="text-2xl font-semibold mb-6">Dialog</h2>
+              <Card className="border-0 rounded-none shadow-none">
+                <CardHeader>
+                  <CardTitle>Dialog</CardTitle>
+                  <CardDescription>Modal dialog examples</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-3">
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button variant="outline">Open Dialog</Button>
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogHeader>
+                          <DialogTitle>Dialog Title</DialogTitle>
+                          <DialogDescription>
+                            This is a dialog description that explains the
+                            purpose of the dialog.
+                          </DialogDescription>
+                        </DialogHeader>
+                        <div className="py-4">
+                          <p className="text-sm text-muted-foreground">
+                            Dialog body content goes here.
+                          </p>
+                        </div>
+                        <DialogFooter>
+                          <Button variant="outline">Cancel</Button>
+                          <Button>Confirm</Button>
+                        </DialogFooter>
+                      </DialogContent>
+                    </Dialog>
+                  </div>
+                </CardContent>
+              </Card>
+            </section>
+
+            {/* Alert Dialog Section */}
+            <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-b-0 p-4">
+              <h2 className="text-2xl font-semibold mb-6">Alert Dialog</h2>
+              <Card className="border-0 rounded-none shadow-none">
+                <CardHeader>
+                  <CardTitle>Alert Dialog</CardTitle>
+                  <CardDescription>
+                    Confirmation dialogs for destructive actions
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                      <Button variant="destructive">Delete Item</Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                      <AlertDialogHeader>
+                        <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                        <AlertDialogDescription>
+                          This action cannot be undone. This will permanently
+                          delete the item.
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogAction>Continue</AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
+                </CardContent>
+              </Card>
+            </section>
+
+            {/* Sheet Section */}
+            <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-b-0 p-4">
+              <h2 className="text-2xl font-semibold mb-6">Sheet</h2>
+              <Card className="border-0 rounded-none shadow-none">
+                <CardHeader>
+                  <CardTitle>Sheet</CardTitle>
+                  <CardDescription>Side panel overlays</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-3">
+                    <Sheet>
+                      <SheetTrigger asChild>
+                        <Button variant="outline">Open Right</Button>
+                      </SheetTrigger>
+                      <SheetContent>
+                        <SheetHeader>
+                          <SheetTitle>Sheet Title</SheetTitle>
+                          <SheetDescription>
+                            This is a sheet that slides in from the right.
+                          </SheetDescription>
+                        </SheetHeader>
+                      </SheetContent>
+                    </Sheet>
+                    <Sheet>
+                      <SheetTrigger asChild>
+                        <Button variant="outline">Open Left</Button>
+                      </SheetTrigger>
+                      <SheetContent side="left">
+                        <SheetHeader>
+                          <SheetTitle>Left Sheet</SheetTitle>
+                          <SheetDescription>
+                            This sheet slides in from the left.
+                          </SheetDescription>
+                        </SheetHeader>
+                      </SheetContent>
+                    </Sheet>
+                  </div>
+                </CardContent>
+              </Card>
+            </section>
+
+            {/* Dropdown Menu Section */}
+            <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-b-0 p-4">
+              <h2 className="text-2xl font-semibold mb-6">Dropdown Menu</h2>
+              <Card className="border-0 rounded-none shadow-none">
+                <CardHeader>
+                  <CardTitle>Dropdown Menu</CardTitle>
+                  <CardDescription>Context and action menus</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="outline">Open Menu</Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem>Profile</DropdownMenuItem>
+                      <DropdownMenuItem>Settings</DropdownMenuItem>
+                      <DropdownMenuItem>Billing</DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem variant="destructive">
+                        Log out
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </CardContent>
+              </Card>
+            </section>
+
+            {/* Breadcrumb Section */}
+            <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-b-0 p-4">
+              <h2 className="text-2xl font-semibold mb-6">Breadcrumb</h2>
+              <Card className="border-0 rounded-none shadow-none">
+                <CardHeader>
+                  <CardTitle>Breadcrumb</CardTitle>
+                  <CardDescription>
+                    Navigation breadcrumb trails
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Breadcrumb>
+                    <BreadcrumbList>
+                      <BreadcrumbItem>
+                        <BreadcrumbLink href="#">Home</BreadcrumbLink>
+                      </BreadcrumbItem>
+                      <BreadcrumbSeparator />
+                      <BreadcrumbItem>
+                        <BreadcrumbLink href="#">Components</BreadcrumbLink>
+                      </BreadcrumbItem>
+                      <BreadcrumbSeparator />
+                      <BreadcrumbItem>
+                        <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+                      </BreadcrumbItem>
+                    </BreadcrumbList>
+                  </Breadcrumb>
+                </CardContent>
+              </Card>
+            </section>
+
+            {/* Separator Section */}
+            <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-b-0 p-4">
+              <h2 className="text-2xl font-semibold mb-6">Separator</h2>
+              <Card className="border-0 rounded-none shadow-none">
+                <CardHeader>
+                  <CardTitle>Separator</CardTitle>
+                  <CardDescription>
+                    Visual dividers between content
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div>
+                    <h3 className="text-lg font-semibold mb-3">Horizontal</h3>
+                    <div className="space-y-3">
+                      <p className="text-sm">Content above</p>
+                      <Separator />
+                      <p className="text-sm">Content below</p>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold mb-3">Vertical</h3>
+                    <div className="flex items-center gap-3 h-6">
+                      <span className="text-sm">Left</span>
+                      <Separator orientation="vertical" />
+                      <span className="text-sm">Right</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </section>
+
+            {/* Table Section */}
+            <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-b-0 p-4">
+              <h2 className="text-2xl font-semibold mb-6">Table</h2>
+              <Card className="border-0 rounded-none shadow-none">
+                <CardHeader>
+                  <CardTitle>Table</CardTitle>
+                  <CardDescription>Data table component</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Name</TableHead>
+                        <TableHead>Status</TableHead>
+                        <TableHead className="text-end">Amount</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      <TableRow>
+                        <TableCell>John Doe</TableCell>
+                        <TableCell>Active</TableCell>
+                        <TableCell className="text-end">$250.00</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell>Jane Smith</TableCell>
+                        <TableCell>Pending</TableCell>
+                        <TableCell className="text-end">$150.00</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell>Bob Johnson</TableCell>
+                        <TableCell>Inactive</TableCell>
+                        <TableCell className="text-end">$350.00</TableCell>
+                      </TableRow>
+                    </TableBody>
+                  </Table>
+                </CardContent>
+              </Card>
+            </section>
+
+            {/* Input OTP Section */}
+            <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-b-0 p-4">
+              <h2 className="text-2xl font-semibold mb-6">Input OTP</h2>
+              <Card className="border-0 rounded-none shadow-none">
+                <CardHeader>
+                  <CardTitle>OTP Input</CardTitle>
+                  <CardDescription>
+                    One-time password input fields
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div>
+                    <h3 className="text-lg font-semibold mb-3">6 Digits</h3>
+                    <InputOTP maxLength={6}>
+                      <InputOTPGroup>
+                        <InputOTPSlot index={0} />
+                        <InputOTPSlot index={1} />
+                        <InputOTPSlot index={2} />
+                      </InputOTPGroup>
+                      <InputOTPSeparator />
+                      <InputOTPGroup>
+                        <InputOTPSlot index={3} />
+                        <InputOTPSlot index={4} />
+                        <InputOTPSlot index={5} />
+                      </InputOTPGroup>
+                    </InputOTP>
+                  </div>
+
+                  <div>
+                    <h3 className="text-lg font-semibold mb-3">4 Digits</h3>
+                    <InputOTP maxLength={4}>
+                      <InputOTPGroup>
+                        <InputOTPSlot index={0} />
+                        <InputOTPSlot index={1} />
+                        <InputOTPSlot index={2} />
+                        <InputOTPSlot index={3} />
+                      </InputOTPGroup>
+                    </InputOTP>
+                  </div>
+                </CardContent>
+              </Card>
+            </section>
+
+            {/* Pagination Section */}
+            <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-b-0 p-4">
+              <h2 className="text-2xl font-semibold mb-6">Pagination</h2>
+              <Card className="border-0 rounded-none shadow-none">
+                <CardHeader>
+                  <CardTitle>Pagination</CardTitle>
+                  <CardDescription>Page navigation components</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Pagination>
+                    <PaginationContent>
+                      <PaginationItem>
+                        <PaginationPrevious href="#" />
+                      </PaginationItem>
+                      <PaginationItem>
+                        <PaginationLink href="#" isActive>
+                          1
+                        </PaginationLink>
+                      </PaginationItem>
+                      <PaginationItem>
+                        <PaginationLink href="#">2</PaginationLink>
+                      </PaginationItem>
+                      <PaginationItem>
+                        <PaginationLink href="#">3</PaginationLink>
+                      </PaginationItem>
+                      <PaginationItem>
+                        <PaginationEllipsis />
+                      </PaginationItem>
+                      <PaginationItem>
+                        <PaginationNext href="#" />
+                      </PaginationItem>
+                    </PaginationContent>
+                  </Pagination>
+                </CardContent>
+              </Card>
+            </section>
+
             {/* Typography Section */}
-            <section className="border-dashed border border-l-0 border-b p-4">
+            <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-b-0 p-4">
               <h2 className="text-2xl font-semibold mb-6">Typography</h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
@@ -919,6 +1355,85 @@ const UiKit = () => {
                     <p className="text-sm text-muted-foreground">
                       This is smaller text with muted foreground color.
                     </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </section>
+            {/* Slider Section */}
+            <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-b-0 p-4">
+              <h2 className="text-2xl font-semibold mb-6">Slider</h2>
+              <Card className="border-0 rounded-none shadow-none">
+                <CardHeader>
+                  <CardTitle>Slider</CardTitle>
+                  <CardDescription>Range slider components</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6 max-w-md">
+                  <div>
+                    <h3 className="text-lg font-semibold mb-3">Default</h3>
+                    <Slider
+                      value={sliderValue}
+                      onValueChange={setSliderValue}
+                      max={100}
+                      step={1}
+                    />
+                    <p className="text-sm text-muted-foreground mt-2">
+                      Value: {sliderValue[0]}
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-lg font-semibold mb-3">With Steps</h3>
+                    <Slider defaultValue={[25]} max={100} step={25} />
+                  </div>
+
+                  <div>
+                    <h3 className="text-lg font-semibold mb-3">Disabled</h3>
+                    <Slider defaultValue={[50]} max={100} disabled />
+                  </div>
+                </CardContent>
+              </Card>
+            </section>
+            {/* Radio Group Section */}
+            <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-b p-4">
+              <h2 className="text-2xl font-semibold mb-6">Radio Group</h2>
+              <Card className="border-0 rounded-none shadow-none">
+                <CardHeader>
+                  <CardTitle>Radio Group</CardTitle>
+                  <CardDescription>
+                    Radio button groups for single selection
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div>
+                    <h3 className="text-lg font-semibold mb-3">Default</h3>
+                    <RadioGroup defaultValue="option-1">
+                      <div className="flex items-center gap-3">
+                        <RadioGroupItem value="option-1" id="radio-1" />
+                        <Label htmlFor="radio-1">Option One</Label>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <RadioGroupItem value="option-2" id="radio-2" />
+                        <Label htmlFor="radio-2">Option Two</Label>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <RadioGroupItem value="option-3" id="radio-3" />
+                        <Label htmlFor="radio-3">Option Three</Label>
+                      </div>
+                    </RadioGroup>
+                  </div>
+
+                  <div>
+                    <h3 className="text-lg font-semibold mb-3">Disabled</h3>
+                    <RadioGroup defaultValue="disabled-1" disabled>
+                      <div className="flex items-center gap-3">
+                        <RadioGroupItem value="disabled-1" id="radio-d1" />
+                        <Label htmlFor="radio-d1">Disabled Selected</Label>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <RadioGroupItem value="disabled-2" id="radio-d2" />
+                        <Label htmlFor="radio-d2">Disabled</Label>
+                      </div>
+                    </RadioGroup>
                   </div>
                 </CardContent>
               </Card>
