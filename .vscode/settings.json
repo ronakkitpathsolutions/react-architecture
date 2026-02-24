@@ -1,5 +1,14 @@
 {
-  "cSpell.words": ["eslintcache", "VITE"],
+  "cSpell.words": [
+    "eslintcache",
+    "VITE",
+    "cmdk",
+    "Vaul",
+    "languagedetector",
+    "treemap",
+    "bunfig",
+    "nums"
+  ],
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "prettier.requireConfig": true,

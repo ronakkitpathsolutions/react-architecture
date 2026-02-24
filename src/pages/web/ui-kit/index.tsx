@@ -97,8 +97,11 @@ import {
 } from '@/components/ui';
 import { toast } from 'sonner';
 import ICONS from '@/assets/icons';
+import useT from '@/hooks/use-translation';
 
 const UiKit = () => {
+  const t = useT();
+
   const [checkboxStates, setCheckboxStates] = useState({
     checked1: false,
     checked2: true,
@@ -119,11 +122,8 @@ const UiKit = () => {
       <div className="w-full">
         <div className="w-full border-b border-t border-dashed">
           <div className="text-center py-12  max-w-7xl mx-auto border-dashed border-l border-r">
-            <h1 className="text-4xl font-bold mb-2">UI Kit</h1>
-            <p className="text-muted-foreground">
-              Comprehensive showcase of all core UI components with variants and
-              types
-            </p>
+            <h1 className="text-4xl font-bold mb-2">{t('uiKit.title')}</h1>
+            <p className="text-muted-foreground">{t('uiKit.description')}</p>
           </div>
         </div>
         {/* Grid Layout 6:6 */}
@@ -131,44 +131,47 @@ const UiKit = () => {
           <div className="col-span-12 md:col-span-6">
             {/* Buttons Section */}
             <section className="border-dashed border p-4 border-t-0 border-b-0">
-              <h2 className="text-2xl font-semibold mb-6">Buttons</h2>
+              <h2 className="text-2xl font-semibold mb-6">
+                {t('uiKit.buttons.title')}
+              </h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
-                  <CardTitle>Button Variants</CardTitle>
+                  <CardTitle>{t('uiKit.buttons.cardTitle')}</CardTitle>
                   <CardDescription>
-                    All available button variants with different sizes and
-                    states
+                    {t('uiKit.buttons.cardDescription')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-8">
                   {/* Default Variant */}
                   <div>
                     <h3 className="text-lg font-semibold mb-4">
-                      Default Variant
+                      {t('uiKit.buttons.defaultVariant')}
                     </h3>
                     <div className="flex flex-wrap gap-3">
-                      <Button size="xs">Extra Small</Button>
-                      <Button size="sm">Small</Button>
-                      <Button size="default">Default</Button>
-                      <Button size="lg">Large</Button>
-                      <Button disabled>Disabled</Button>
+                      <Button size="xs">{t('uiKit.buttons.extraSmall')}</Button>
+                      <Button size="sm">{t('uiKit.buttons.small')}</Button>
+                      <Button size="default">
+                        {t('uiKit.buttons.default')}
+                      </Button>
+                      <Button size="lg">{t('uiKit.buttons.large')}</Button>
+                      <Button disabled>{t('uiKit.buttons.disabled')}</Button>
                     </div>
                   </div>
 
                   {/* Outline Variant */}
                   <div>
                     <h3 className="text-lg font-semibold mb-4">
-                      Outline Variant
+                      {t('uiKit.buttons.outlineVariant')}
                     </h3>
                     <div className="flex flex-wrap gap-3">
                       <Button variant="outline" size="sm">
-                        Small
+                        {t('uiKit.buttons.small')}
                       </Button>
                       <Button variant="outline" size="default">
-                        Default
+                        {t('uiKit.buttons.default')}
                       </Button>
                       <Button variant="outline" size="lg">
-                        Large
+                        {t('uiKit.buttons.large')}
                       </Button>
                     </div>
                   </div>
@@ -176,15 +179,17 @@ const UiKit = () => {
                   {/* Secondary Variant */}
                   <div>
                     <h3 className="text-lg font-semibold mb-4">
-                      Secondary Variant
+                      {t('uiKit.buttons.secondaryVariant')}
                     </h3>
                     <div className="flex flex-wrap gap-3">
                       <Button variant="secondary" size="sm">
-                        Small
+                        {t('uiKit.buttons.small')}
                       </Button>
-                      <Button variant="secondary">Default</Button>
+                      <Button variant="secondary">
+                        {t('uiKit.buttons.default')}
+                      </Button>
                       <Button variant="secondary" size="lg">
-                        Large
+                        {t('uiKit.buttons.large')}
                       </Button>
                     </div>
                   </div>
@@ -192,15 +197,17 @@ const UiKit = () => {
                   {/* Ghost Variant */}
                   <div>
                     <h3 className="text-lg font-semibold mb-4">
-                      Ghost Variant
+                      {t('uiKit.buttons.ghostVariant')}
                     </h3>
                     <div className="flex flex-wrap gap-3">
                       <Button variant="ghost" size="sm">
-                        Small
+                        {t('uiKit.buttons.small')}
                       </Button>
-                      <Button variant="ghost">Default</Button>
+                      <Button variant="ghost">
+                        {t('uiKit.buttons.default')}
+                      </Button>
                       <Button variant="ghost" size="lg">
-                        Large
+                        {t('uiKit.buttons.large')}
                       </Button>
                     </div>
                   </div>
@@ -208,36 +215,44 @@ const UiKit = () => {
                   {/* Destructive Variant */}
                   <div>
                     <h3 className="text-lg font-semibold mb-4">
-                      Destructive Variant
+                      {t('uiKit.buttons.destructiveVariant')}
                     </h3>
                     <div className="flex flex-wrap gap-3">
                       <Button variant="destructive" size="sm">
-                        Small
+                        {t('uiKit.buttons.small')}
                       </Button>
-                      <Button variant="destructive">Default</Button>
+                      <Button variant="destructive">
+                        {t('uiKit.buttons.default')}
+                      </Button>
                       <Button variant="destructive" size="lg">
-                        Large
+                        {t('uiKit.buttons.large')}
                       </Button>
                     </div>
                   </div>
 
                   {/* Link Variant */}
                   <div>
-                    <h3 className="text-lg font-semibold mb-4">Link Variant</h3>
+                    <h3 className="text-lg font-semibold mb-4">
+                      {t('uiKit.buttons.linkVariant')}
+                    </h3>
                     <div className="flex flex-wrap gap-3">
                       <Button variant="link" size="sm">
-                        Small Link
+                        {t('uiKit.buttons.smallLink')}
                       </Button>
-                      <Button variant="link">Default Link</Button>
+                      <Button variant="link">
+                        {t('uiKit.buttons.defaultLink')}
+                      </Button>
                       <Button variant="link" size="lg">
-                        Large Link
+                        {t('uiKit.buttons.largeLink')}
                       </Button>
                     </div>
                   </div>
 
                   {/* Icon Buttons */}
                   <div>
-                    <h3 className="text-lg font-semibold mb-4">Icon Buttons</h3>
+                    <h3 className="text-lg font-semibold mb-4">
+                      {t('uiKit.buttons.iconButtons')}
+                    </h3>
                     <div className="flex flex-wrap gap-3">
                       <Button size="icon-xs">@</Button>
                       <Button size="icon-sm">+</Button>
@@ -251,11 +266,15 @@ const UiKit = () => {
 
             {/* Tooltips Section */}
             <section className="border-dashed border border-b-0 p-4">
-              <h2 className="text-2xl font-semibold mb-6">Tooltips</h2>
+              <h2 className="text-2xl font-semibold mb-6">
+                {t('uiKit.tooltips.title')}
+              </h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
-                  <CardTitle>Tooltip Examples</CardTitle>
-                  <CardDescription>Basic tooltip usages</CardDescription>
+                  <CardTitle>{t('uiKit.tooltips.cardTitle')}</CardTitle>
+                  <CardDescription>
+                    {t('uiKit.tooltips.cardDescription')}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <TooltipProvider>
@@ -263,19 +282,23 @@ const UiKit = () => {
                       <div className="flex items-center gap-3">
                         <Tooltip>
                           <TooltipTrigger asChild>
-                            <Button variant="outline">Hover (bottom)</Button>
+                            <Button variant="outline">
+                              {t('uiKit.tooltips.hoverBottom')}
+                            </Button>
                           </TooltipTrigger>
                           <TooltipContent side="bottom">
-                            Bottom tooltip
+                            {t('uiKit.tooltips.bottomTooltip')}
                           </TooltipContent>
                         </Tooltip>
 
                         <Tooltip>
                           <TooltipTrigger asChild>
-                            <Button variant="ghost">Right</Button>
+                            <Button variant="ghost">
+                              {t('uiKit.tooltips.right')}
+                            </Button>
                           </TooltipTrigger>
                           <TooltipContent side="right" sideOffset={6}>
-                            Right tooltip
+                            {t('uiKit.tooltips.rightTooltip')}
                           </TooltipContent>
                         </Tooltip>
                       </div>
@@ -283,19 +306,23 @@ const UiKit = () => {
                       <div className="flex items-center gap-3">
                         <Tooltip>
                           <TooltipTrigger asChild>
-                            <Button variant="secondary">Top</Button>
+                            <Button variant="secondary">
+                              {t('uiKit.tooltips.top')}
+                            </Button>
                           </TooltipTrigger>
                           <TooltipContent side="top" sideOffset={6}>
-                            Top tooltip
+                            {t('uiKit.tooltips.topTooltip')}
                           </TooltipContent>
                         </Tooltip>
 
                         <Tooltip>
                           <TooltipTrigger asChild>
-                            <Button variant="link">Left</Button>
+                            <Button variant="link">
+                              {t('uiKit.tooltips.left')}
+                            </Button>
                           </TooltipTrigger>
                           <TooltipContent side="left" sideOffset={6}>
-                            Left tooltip
+                            {t('uiKit.tooltips.leftTooltip')}
                           </TooltipContent>
                         </Tooltip>
                       </div>
@@ -307,54 +334,64 @@ const UiKit = () => {
 
             {/* Accordion Section */}
             <section className="border-dashed border border-b-0 p-4">
-              <h2 className="text-2xl font-semibold mb-6">Accordion</h2>
+              <h2 className="text-2xl font-semibold mb-6">
+                {t('uiKit.accordion.title')}
+              </h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
-                  <CardTitle>Accordion</CardTitle>
-                  <CardDescription>Simple accordion examples</CardDescription>
+                  <CardTitle>{t('uiKit.accordion.cardTitle')}</CardTitle>
+                  <CardDescription>
+                    {t('uiKit.accordion.cardDescription')}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     <div>
-                      <h4 className="font-medium mb-2">Default</h4>
+                      <h4 className="font-medium mb-2">
+                        {t('uiKit.accordion.default')}
+                      </h4>
                       <details className="group border rounded-md p-3">
                         <summary className="cursor-pointer select-none font-medium">
-                          Accordion item one
+                          {t('uiKit.accordion.itemOne')}
                         </summary>
                         <div className="mt-2 text-sm text-muted-foreground">
-                          This is the content for the first accordion item.
+                          {t('uiKit.accordion.itemOneContent')}
                         </div>
                       </details>
                     </div>
 
                     <div>
-                      <h4 className="font-medium mb-2">Compact</h4>
+                      <h4 className="font-medium mb-2">
+                        {t('uiKit.accordion.compact')}
+                      </h4>
                       <details className="group border rounded-md p-2 text-sm">
                         <summary className="cursor-pointer select-none font-medium">
-                          Compact item
+                          {t('uiKit.accordion.compactItem')}
                         </summary>
                         <div className="mt-1 text-xs text-muted-foreground">
-                          Smaller padding and font for compact accordion.
+                          {t('uiKit.accordion.compactContent')}
                         </div>
                       </details>
                     </div>
 
                     <div>
-                      <h4 className="font-medium mb-2">Nested</h4>
+                      <h4 className="font-medium mb-2">
+                        {t('uiKit.accordion.nested')}
+                      </h4>
                       <details className="group border rounded-md p-3">
                         <summary className="cursor-pointer select-none font-medium">
-                          Parent item
+                          {t('uiKit.accordion.parentItem')}
                         </summary>
                         <div className="mt-2 space-y-2">
                           <p className="text-sm text-muted-foreground">
-                            Parent content
+                            {t('uiKit.accordion.parentContent')}
                           </p>
                           <details className="group border rounded-md p-2">
                             <summary className="cursor-pointer select-none font-medium">
-                              Child item
+                              {t('uiKit.accordion.childItem')}
                             </summary>
                             <div className="mt-1 text-sm text-muted-foreground">
-                              Nested content
+                              {t('uiKit.accordion.nestedContent')}
                             </div>
                           </details>
                         </div>
@@ -362,16 +399,18 @@ const UiKit = () => {
                     </div>
 
                     <div>
-                      <h4 className="font-medium mb-2">Disabled</h4>
+                      <h4 className="font-medium mb-2">
+                        {t('uiKit.accordion.disabled')}
+                      </h4>
                       <details
                         className="group border rounded-md p-3 opacity-50 pointer-events-none"
                         aria-disabled
                       >
                         <summary className="cursor-not-allowed select-none font-medium">
-                          Disabled item
+                          {t('uiKit.accordion.disabledItem')}
                         </summary>
                         <div className="mt-2 text-sm text-muted-foreground">
-                          Disabled content
+                          {t('uiKit.accordion.disabledContent')}
                         </div>
                       </details>
                     </div>
@@ -382,44 +421,52 @@ const UiKit = () => {
 
             {/* Button Group Section */}
             <section className="border-dashed border border-b-0 p-4">
-              <h2 className="text-2xl font-semibold mb-6">Button Group</h2>
+              <h2 className="text-2xl font-semibold mb-6">
+                {t('uiKit.buttonGroup.title')}
+              </h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
-                  <CardTitle>Button Group</CardTitle>
+                  <CardTitle>{t('uiKit.buttonGroup.cardTitle')}</CardTitle>
                   <CardDescription>
-                    Grouped buttons and variants
+                    {t('uiKit.buttonGroup.cardDescription')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-col gap-4">
                     <div>
-                      <h4 className="font-medium mb-2">Horizontal</h4>
+                      <h4 className="font-medium mb-2">
+                        {t('uiKit.buttonGroup.horizontal')}
+                      </h4>
                       <div className="flex items-center gap-3">
                         <ButtonGroup>
-                          <Button>Left</Button>
-                          <Button>Middle</Button>
-                          <Button>Right</Button>
+                          <Button>{t('uiKit.buttonGroup.left')}</Button>
+                          <Button>{t('uiKit.buttonGroup.middle')}</Button>
+                          <Button>{t('uiKit.buttonGroup.right')}</Button>
                         </ButtonGroup>
                       </div>
                     </div>
 
                     <div>
-                      <h4 className="font-medium mb-2">Vertical</h4>
+                      <h4 className="font-medium mb-2">
+                        {t('uiKit.buttonGroup.vertical')}
+                      </h4>
                       <div className="flex items-start gap-3">
                         <ButtonGroup orientation="vertical">
-                          <Button>One</Button>
-                          <Button>Two</Button>
-                          <Button>Three</Button>
+                          <Button>{t('uiKit.buttonGroup.one')}</Button>
+                          <Button>{t('uiKit.buttonGroup.two')}</Button>
+                          <Button>{t('uiKit.buttonGroup.three')}</Button>
                         </ButtonGroup>
                       </div>
                     </div>
 
                     <div>
-                      <h4 className="font-medium mb-2">Segmented</h4>
+                      <h4 className="font-medium mb-2">
+                        {t('uiKit.buttonGroup.segmented')}
+                      </h4>
                       <div className="flex items-center gap-3">
                         <ButtonGroup>
                           <Button variant="outline">A</Button>
-                          <Button>Center</Button>
+                          <Button>{t('uiKit.buttonGroup.center')}</Button>
                           <Button variant="ghost">C</Button>
                         </ButtonGroup>
                         <ButtonGroup>
@@ -439,28 +486,52 @@ const UiKit = () => {
 
             {/* Notifications (Sonner) Section */}
             <section className="border-dashed border border-b-0 p-4">
-              <h2 className="text-2xl font-semibold mb-6">Notifications</h2>
+              <h2 className="text-2xl font-semibold mb-6">
+                {t('uiKit.notifications.title')}
+              </h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
-                  <CardTitle>Toasts</CardTitle>
-                  <CardDescription>Sonner toaster examples</CardDescription>
+                  <CardTitle>{t('uiKit.notifications.cardTitle')}</CardTitle>
+                  <CardDescription>
+                    {t('uiKit.notifications.cardDescription')}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap items-center gap-3">
-                    <Button onClick={() => toast('Default message')}>
-                      Toast
+                    <Button
+                      onClick={() =>
+                        toast(t('uiKit.notifications.defaultMessage'))
+                      }
+                    >
+                      {t('uiKit.notifications.toast')}
                     </Button>
-                    <Button onClick={() => toast.success('Success message')}>
-                      Success
+                    <Button
+                      onClick={() =>
+                        toast.success(t('uiKit.notifications.successMessage'))
+                      }
+                    >
+                      {t('uiKit.notifications.success')}
                     </Button>
-                    <Button onClick={() => toast.info('Info message')}>
-                      Info
+                    <Button
+                      onClick={() =>
+                        toast.info(t('uiKit.notifications.infoMessage'))
+                      }
+                    >
+                      {t('uiKit.notifications.info')}
                     </Button>
-                    <Button onClick={() => toast.warning('Warning message')}>
-                      Warning
+                    <Button
+                      onClick={() =>
+                        toast.warning(t('uiKit.notifications.warningMessage'))
+                      }
+                    >
+                      {t('uiKit.notifications.warning')}
                     </Button>
-                    <Button onClick={() => toast.error('Error message')}>
-                      Error
+                    <Button
+                      onClick={() =>
+                        toast.error(t('uiKit.notifications.errorMessage'))
+                      }
+                    >
+                      {t('uiKit.notifications.error')}
                     </Button>
                   </div>
                 </CardContent>
@@ -469,27 +540,33 @@ const UiKit = () => {
 
             {/* Tabs Section */}
             <section className="border-dashed border border-b-0 p-4">
-              <h2 className="text-2xl font-semibold mb-6">Tabs</h2>
+              <h2 className="text-2xl font-semibold mb-6">
+                {t('uiKit.tabs.title')}
+              </h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
-                  <CardTitle>Tabs</CardTitle>
+                  <CardTitle>{t('uiKit.tabs.cardTitle')}</CardTitle>
                   <CardDescription>
-                    Tab list and content examples
+                    {t('uiKit.tabs.cardDescription')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="max-w-md">
                     <Tabs defaultValue="tab1">
                       <TabsList>
-                        <TabsTrigger value="tab1">Tab 1</TabsTrigger>
-                        <TabsTrigger value="tab2">Tab 2</TabsTrigger>
+                        <TabsTrigger value="tab1">
+                          {t('uiKit.tabs.tab1')}
+                        </TabsTrigger>
+                        <TabsTrigger value="tab2">
+                          {t('uiKit.tabs.tab2')}
+                        </TabsTrigger>
                       </TabsList>
                       <div className="mt-3">
                         <TabsContent value="tab1">
-                          Content for tab one.
+                          {t('uiKit.tabs.tab1Content')}
                         </TabsContent>
                         <TabsContent value="tab2">
-                          Content for tab two.
+                          {t('uiKit.tabs.tab2Content')}
                         </TabsContent>
                       </div>
                     </Tabs>
@@ -500,11 +577,15 @@ const UiKit = () => {
 
             {/* Toggle Group Section */}
             <section className="border-dashed border border-b-0 p-4">
-              <h2 className="text-2xl font-semibold mb-6">Toggle Group</h2>
+              <h2 className="text-2xl font-semibold mb-6">
+                {t('uiKit.toggleGroup.title')}
+              </h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
-                  <CardTitle>Toggle Group</CardTitle>
-                  <CardDescription>Grouped toggle examples</CardDescription>
+                  <CardTitle>{t('uiKit.toggleGroup.cardTitle')}</CardTitle>
+                  <CardDescription>
+                    {t('uiKit.toggleGroup.cardDescription')}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="flex items-center gap-3">
@@ -513,10 +594,14 @@ const UiKit = () => {
                       defaultValue="bold"
                       aria-label="Text formatting"
                     >
-                      <ToggleGroupItem value="bold">Bold</ToggleGroupItem>
-                      <ToggleGroupItem value="italic">Italic</ToggleGroupItem>
+                      <ToggleGroupItem value="bold">
+                        {t('uiKit.toggleGroup.bold')}
+                      </ToggleGroupItem>
+                      <ToggleGroupItem value="italic">
+                        {t('uiKit.toggleGroup.italic')}
+                      </ToggleGroupItem>
                       <ToggleGroupItem value="underline">
-                        Underline
+                        {t('uiKit.toggleGroup.underline')}
                       </ToggleGroupItem>
                     </ToggleGroup>
                   </div>
@@ -526,38 +611,60 @@ const UiKit = () => {
 
             {/* Badges Section */}
             <section className="border-dashed border border-b-0 p-4">
-              <h2 className="text-2xl font-semibold mb-6">Badges</h2>
+              <h2 className="text-2xl font-semibold mb-6">
+                {t('uiKit.badges.title')}
+              </h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
-                  <CardTitle>Badge Variants</CardTitle>
+                  <CardTitle>{t('uiKit.badges.cardTitle')}</CardTitle>
                   <CardDescription>
-                    All available badge variants
+                    {t('uiKit.badges.cardDescription')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div>
-                    <h3 className="text-lg font-semibold mb-3">Default</h3>
-                    <Badge>Default Badge</Badge>
+                    <h3 className="text-lg font-semibold mb-3">
+                      {t('uiKit.badges.default')}
+                    </h3>
+                    <Badge>{t('uiKit.badges.defaultBadge')}</Badge>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold mb-3">Secondary</h3>
-                    <Badge variant="secondary">Secondary Badge</Badge>
+                    <h3 className="text-lg font-semibold mb-3">
+                      {t('uiKit.badges.secondary')}
+                    </h3>
+                    <Badge variant="secondary">
+                      {t('uiKit.badges.secondaryBadge')}
+                    </Badge>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold mb-3">Destructive</h3>
-                    <Badge variant="destructive">Destructive Badge</Badge>
+                    <h3 className="text-lg font-semibold mb-3">
+                      {t('uiKit.badges.destructive')}
+                    </h3>
+                    <Badge variant="destructive">
+                      {t('uiKit.badges.destructiveBadge')}
+                    </Badge>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold mb-3">Outline</h3>
-                    <Badge variant="outline">Outline Badge</Badge>
+                    <h3 className="text-lg font-semibold mb-3">
+                      {t('uiKit.badges.outline')}
+                    </h3>
+                    <Badge variant="outline">
+                      {t('uiKit.badges.outlineBadge')}
+                    </Badge>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold mb-3">Ghost</h3>
-                    <Badge variant="ghost">Ghost Badge</Badge>
+                    <h3 className="text-lg font-semibold mb-3">
+                      {t('uiKit.badges.ghost')}
+                    </h3>
+                    <Badge variant="ghost">
+                      {t('uiKit.badges.ghostBadge')}
+                    </Badge>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold mb-3">Link</h3>
-                    <Badge variant="link">Link Badge</Badge>
+                    <h3 className="text-lg font-semibold mb-3">
+                      {t('uiKit.badges.link')}
+                    </h3>
+                    <Badge variant="link">{t('uiKit.badges.linkBadge')}</Badge>
                   </div>
                 </CardContent>
               </Card>
@@ -565,22 +672,26 @@ const UiKit = () => {
 
             {/* Form Inputs Section */}
             <section className="border-dashed border border-b-0 p-4">
-              <h2 className="text-2xl font-semibold mb-6">Form Inputs</h2>
+              <h2 className="text-2xl font-semibold mb-6">
+                {t('uiKit.formInputs.title')}
+              </h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
-                  <CardTitle>Input Components</CardTitle>
+                  <CardTitle>{t('uiKit.formInputs.cardTitle')}</CardTitle>
                   <CardDescription>
-                    All form input variants and states
+                    {t('uiKit.formInputs.cardDescription')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6 max-w-md">
                   {/* Text Input */}
                   <div>
-                    <Label htmlFor="text-input">Text Input</Label>
+                    <Label htmlFor="text-input">
+                      {t('uiKit.formInputs.textInput')}
+                    </Label>
                     <Input
                       id="text-input"
                       type="text"
-                      placeholder="Enter text..."
+                      placeholder={t('uiKit.formInputs.enterText')}
                       value={inputValue}
                       onChange={(e) => setInputValue(e.target.value)}
                       className="mt-2"
@@ -589,29 +700,35 @@ const UiKit = () => {
 
                   {/* Email Input */}
                   <div>
-                    <Label htmlFor="email-input">Email Input</Label>
+                    <Label htmlFor="email-input">
+                      {t('uiKit.formInputs.emailInput')}
+                    </Label>
                     <Input
                       id="email-input"
                       type="email"
-                      placeholder="your.email@example.com"
+                      placeholder={t('uiKit.formInputs.emailPlaceholder')}
                       className="mt-2"
                     />
                   </div>
 
                   {/* Password Input */}
                   <div>
-                    <Label htmlFor="password-input">Password Input</Label>
+                    <Label htmlFor="password-input">
+                      {t('uiKit.formInputs.passwordInput')}
+                    </Label>
                     <Input
                       id="password-input"
                       type="password"
-                      placeholder="••••••••"
+                      placeholder={t('uiKit.formInputs.passwordPlaceholder')}
                       className="mt-2"
                     />
                   </div>
 
                   {/* Number Input */}
                   <div>
-                    <Label htmlFor="number-input">Number Input</Label>
+                    <Label htmlFor="number-input">
+                      {t('uiKit.formInputs.numberInput')}
+                    </Label>
                     <Input
                       id="number-input"
                       type="number"
@@ -622,10 +739,12 @@ const UiKit = () => {
 
                   {/* Textarea */}
                   <div>
-                    <Label htmlFor="textarea">Textarea</Label>
+                    <Label htmlFor="textarea">
+                      {t('uiKit.formInputs.textarea')}
+                    </Label>
                     <Textarea
                       id="textarea"
-                      placeholder="Enter your message..."
+                      placeholder={t('uiKit.formInputs.textareaPlaceholder')}
                       value={textareaValue}
                       onChange={(e) => setTextareaValue(e.target.value)}
                       className="mt-2"
@@ -634,11 +753,13 @@ const UiKit = () => {
 
                   {/* Disabled Input */}
                   <div>
-                    <Label htmlFor="disabled-input">Disabled Input</Label>
+                    <Label htmlFor="disabled-input">
+                      {t('uiKit.formInputs.disabledInput')}
+                    </Label>
                     <Input
                       id="disabled-input"
                       type="text"
-                      placeholder="Disabled input"
+                      placeholder={t('uiKit.formInputs.disabledPlaceholder')}
                       disabled
                       className="mt-2"
                     />
@@ -649,12 +770,14 @@ const UiKit = () => {
 
             {/* Checkboxes Section */}
             <section className="border-dashed border border-b-0 p-4">
-              <h2 className="text-2xl font-semibold mb-6">Checkboxes</h2>
+              <h2 className="text-2xl font-semibold mb-6">
+                {t('uiKit.checkboxes.title')}
+              </h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
-                  <CardTitle>Checkbox States</CardTitle>
+                  <CardTitle>{t('uiKit.checkboxes.cardTitle')}</CardTitle>
                   <CardDescription>
-                    Different checkbox states and options
+                    {t('uiKit.checkboxes.cardDescription')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -669,7 +792,9 @@ const UiKit = () => {
                         })
                       }
                     />
-                    <Label htmlFor="checkbox-1">Unchecked</Label>
+                    <Label htmlFor="checkbox-1">
+                      {t('uiKit.checkboxes.unchecked')}
+                    </Label>
                   </div>
 
                   <div className="flex items-center gap-3">
@@ -683,17 +808,23 @@ const UiKit = () => {
                         })
                       }
                     />
-                    <Label htmlFor="checkbox-2">Checked</Label>
+                    <Label htmlFor="checkbox-2">
+                      {t('uiKit.checkboxes.checked')}
+                    </Label>
                   </div>
 
                   <div className="flex items-center gap-3">
                     <Checkbox id="checkbox-3" disabled />
-                    <Label htmlFor="checkbox-3">Disabled</Label>
+                    <Label htmlFor="checkbox-3">
+                      {t('uiKit.checkboxes.disabled')}
+                    </Label>
                   </div>
 
                   <div className="flex items-center gap-3">
                     <Checkbox id="checkbox-4" defaultChecked disabled />
-                    <Label htmlFor="checkbox-4">Disabled Checked</Label>
+                    <Label htmlFor="checkbox-4">
+                      {t('uiKit.checkboxes.disabledChecked')}
+                    </Label>
                   </div>
                 </CardContent>
               </Card>
@@ -701,18 +832,22 @@ const UiKit = () => {
 
             {/* Switches Section */}
             <section className="border-dashed border border-b-0 p-4">
-              <h2 className="text-2xl font-semibold mb-6">Switches</h2>
+              <h2 className="text-2xl font-semibold mb-6">
+                {t('uiKit.switches.title')}
+              </h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
-                  <CardTitle>Switch Variants</CardTitle>
+                  <CardTitle>{t('uiKit.switches.cardTitle')}</CardTitle>
                   <CardDescription>
-                    Switch component with different sizes
+                    {t('uiKit.switches.cardDescription')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   {/* Default Size */}
                   <div>
-                    <h3 className="text-lg font-semibold mb-3">Default Size</h3>
+                    <h3 className="text-lg font-semibold mb-3">
+                      {t('uiKit.switches.defaultSize')}
+                    </h3>
                     <div className="flex items-center gap-3">
                       <Switch
                         checked={switchStates.switch1}
@@ -721,14 +856,18 @@ const UiKit = () => {
                         }
                       />
                       <span className="text-sm">
-                        {switchStates.switch1 ? 'Enabled' : 'Disabled'}
+                        {switchStates.switch1
+                          ? t('uiKit.switches.enabled')
+                          : t('uiKit.switches.disabled')}
                       </span>
                     </div>
                   </div>
 
                   {/* Small Size */}
                   <div>
-                    <h3 className="text-lg font-semibold mb-3">Small Size</h3>
+                    <h3 className="text-lg font-semibold mb-3">
+                      {t('uiKit.switches.smallSize')}
+                    </h3>
                     <div className="flex items-center gap-3">
                       <Switch
                         size="sm"
@@ -738,18 +877,22 @@ const UiKit = () => {
                         }
                       />
                       <span className="text-sm">
-                        {switchStates.switch2 ? 'Enabled' : 'Disabled'}
+                        {switchStates.switch2
+                          ? t('uiKit.switches.enabled')
+                          : t('uiKit.switches.disabled')}
                       </span>
                     </div>
                   </div>
 
                   {/* Disabled */}
                   <div>
-                    <h3 className="text-lg font-semibold mb-3">Disabled</h3>
+                    <h3 className="text-lg font-semibold mb-3">
+                      {t('uiKit.switches.disabled')}
+                    </h3>
                     <div className="flex items-center gap-3">
                       <Switch disabled defaultChecked />
                       <span className="text-sm text-muted-foreground">
-                        Disabled Switch
+                        {t('uiKit.switches.disabledSwitch')}
                       </span>
                     </div>
                   </div>
@@ -759,51 +902,73 @@ const UiKit = () => {
 
             {/* Select Section */}
             <section className="border-dashed border border-b p-4">
-              <h2 className="text-2xl font-semibold mb-6">Select</h2>
+              <h2 className="text-2xl font-semibold mb-6">
+                {t('uiKit.select.title')}
+              </h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
-                  <CardTitle>Select Components</CardTitle>
+                  <CardTitle>{t('uiKit.select.cardTitle')}</CardTitle>
                   <CardDescription>
-                    Dropdown select menus with different options
+                    {t('uiKit.select.cardDescription')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6 max-w-md">
                   <div>
-                    <Label>Default Select</Label>
+                    <Label>{t('uiKit.select.defaultSelect')}</Label>
                     <Select>
                       <SelectTrigger className="mt-2">
-                        <SelectValue placeholder="Select an option" />
+                        <SelectValue
+                          placeholder={t('uiKit.select.selectOption')}
+                        />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="option1">Option 1</SelectItem>
-                        <SelectItem value="option2">Option 2</SelectItem>
-                        <SelectItem value="option3">Option 3</SelectItem>
+                        <SelectItem value="option1">
+                          {t('uiKit.select.option1')}
+                        </SelectItem>
+                        <SelectItem value="option2">
+                          {t('uiKit.select.option2')}
+                        </SelectItem>
+                        <SelectItem value="option3">
+                          {t('uiKit.select.option3')}
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
 
                   <div>
-                    <Label>Small Select</Label>
+                    <Label>{t('uiKit.select.smallSelect')}</Label>
                     <Select>
                       <SelectTrigger size="sm" className="mt-2">
-                        <SelectValue placeholder="Small select" />
+                        <SelectValue
+                          placeholder={t('uiKit.select.smallSelectPlaceholder')}
+                        />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="a">Choice A</SelectItem>
-                        <SelectItem value="b">Choice B</SelectItem>
-                        <SelectItem value="c">Choice C</SelectItem>
+                        <SelectItem value="a">
+                          {t('uiKit.select.choiceA')}
+                        </SelectItem>
+                        <SelectItem value="b">
+                          {t('uiKit.select.choiceB')}
+                        </SelectItem>
+                        <SelectItem value="c">
+                          {t('uiKit.select.choiceC')}
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
 
                   <div>
-                    <Label>Disabled Select</Label>
+                    <Label>{t('uiKit.select.disabledSelect')}</Label>
                     <Select disabled>
                       <SelectTrigger className="mt-2">
-                        <SelectValue placeholder="Disabled" />
+                        <SelectValue
+                          placeholder={t('uiKit.select.disabledPlaceholder')}
+                        />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="x">Item X</SelectItem>
+                        <SelectItem value="x">
+                          {t('uiKit.select.itemX')}
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -814,22 +979,26 @@ const UiKit = () => {
           <div className="col-span-12 md:col-span-6">
             {/* Avatars Section */}
             <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-t-0 border-b-0 p-4">
-              <h2 className="text-2xl font-semibold mb-6">Avatars</h2>
+              <h2 className="text-2xl font-semibold mb-6">
+                {t('uiKit.avatars.title')}
+              </h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
-                  <CardTitle>Avatar Sizes</CardTitle>
+                  <CardTitle>{t('uiKit.avatars.cardTitle')}</CardTitle>
                   <CardDescription>
-                    Different avatar sizes with image and fallback
+                    {t('uiKit.avatars.cardDescription')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-8">
                   {/* With Image */}
                   <div>
-                    <h3 className="text-lg font-semibold mb-4">With Image</h3>
+                    <h3 className="text-lg font-semibold mb-4">
+                      {t('uiKit.avatars.withImage')}
+                    </h3>
                     <div className="flex items-center gap-4">
                       <div>
                         <p className="text-sm text-muted-foreground mb-2">
-                          Small
+                          {t('uiKit.avatars.small')}
                         </p>
                         <Avatar size="sm">
                           <AvatarImage src="https://github.com/shadcn.png" />
@@ -838,7 +1007,7 @@ const UiKit = () => {
                       </div>
                       <div>
                         <p className="text-sm text-muted-foreground mb-2">
-                          Default
+                          {t('uiKit.avatars.default')}
                         </p>
                         <Avatar>
                           <AvatarImage src="https://github.com/shadcn.png" />
@@ -847,7 +1016,7 @@ const UiKit = () => {
                       </div>
                       <div>
                         <p className="text-sm text-muted-foreground mb-2">
-                          Large
+                          {t('uiKit.avatars.large')}
                         </p>
                         <Avatar size="lg">
                           <AvatarImage src="https://github.com/shadcn.png" />
@@ -860,12 +1029,12 @@ const UiKit = () => {
                   {/* Fallback Only */}
                   <div>
                     <h3 className="text-lg font-semibold mb-4">
-                      Fallback Only
+                      {t('uiKit.avatars.fallbackOnly')}
                     </h3>
                     <div className="flex items-center gap-4">
                       <div>
                         <p className="text-sm text-muted-foreground mb-2">
-                          Small
+                          {t('uiKit.avatars.small')}
                         </p>
                         <Avatar size="sm">
                           <AvatarFallback>JD</AvatarFallback>
@@ -873,7 +1042,7 @@ const UiKit = () => {
                       </div>
                       <div>
                         <p className="text-sm text-muted-foreground mb-2">
-                          Default
+                          {t('uiKit.avatars.default')}
                         </p>
                         <Avatar>
                           <AvatarFallback>JD</AvatarFallback>
@@ -881,7 +1050,7 @@ const UiKit = () => {
                       </div>
                       <div>
                         <p className="text-sm text-muted-foreground mb-2">
-                          Large
+                          {t('uiKit.avatars.large')}
                         </p>
                         <Avatar size="lg">
                           <AvatarFallback>JD</AvatarFallback>
@@ -895,27 +1064,28 @@ const UiKit = () => {
 
             {/* Alerts Section */}
             <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-b-0 p-4">
-              <h2 className="text-2xl font-semibold mb-6">Alerts</h2>
+              <h2 className="text-2xl font-semibold mb-6">
+                {t('uiKit.alerts.title')}
+              </h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
-                  <CardTitle>Alert Variants</CardTitle>
+                  <CardTitle>{t('uiKit.alerts.cardTitle')}</CardTitle>
                   <CardDescription>
-                    Different alert types and messages
+                    {t('uiKit.alerts.cardDescription')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <Alert>
-                    <AlertTitle>Information</AlertTitle>
+                    <AlertTitle>{t('uiKit.alerts.information')}</AlertTitle>
                     <AlertDescription>
-                      This is an informational alert message.
+                      {t('uiKit.alerts.infoMessage')}
                     </AlertDescription>
                   </Alert>
 
                   <Alert variant="destructive">
-                    <AlertTitle>Error</AlertTitle>
+                    <AlertTitle>{t('uiKit.alerts.error')}</AlertTitle>
                     <AlertDescription>
-                      This is an error alert message indicating something went
-                      wrong.
+                      {t('uiKit.alerts.errorMessage')}
                     </AlertDescription>
                   </Alert>
                 </CardContent>
@@ -924,11 +1094,15 @@ const UiKit = () => {
 
             {/* Progress Section */}
             <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-b-0 p-4">
-              <h2 className="text-2xl font-semibold mb-6">Progress</h2>
+              <h2 className="text-2xl font-semibold mb-6">
+                {t('uiKit.progress.title')}
+              </h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
-                  <CardTitle>Progress Bars</CardTitle>
-                  <CardDescription>Different progress states</CardDescription>
+                  <CardTitle>{t('uiKit.progress.cardTitle')}</CardTitle>
+                  <CardDescription>
+                    {t('uiKit.progress.cardDescription')}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div>
@@ -962,23 +1136,25 @@ const UiKit = () => {
             {/* Loaders Section */}
             <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-b-0 p-4">
               <h2 className="text-2xl font-semibold mb-6">
-                Loaders & Skeletons
+                {t('uiKit.loaders.title')}
               </h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
-                  <CardTitle>Loading States</CardTitle>
+                  <CardTitle>{t('uiKit.loaders.cardTitle')}</CardTitle>
                   <CardDescription>
-                    Spinner and skeleton loading components
+                    {t('uiKit.loaders.cardDescription')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-8">
                   {/* Spinner */}
                   <div>
-                    <h3 className="text-lg font-semibold mb-4">Spinner</h3>
+                    <h3 className="text-lg font-semibold mb-4">
+                      {t('uiKit.loaders.spinner')}
+                    </h3>
                     <div className="flex items-center gap-4">
                       <Spinner />
                       <span className="text-sm text-muted-foreground">
-                        Loading...
+                        {t('uiKit.loaders.loading')}
                       </span>
                     </div>
                   </div>
@@ -986,7 +1162,7 @@ const UiKit = () => {
                   {/* Skeletons */}
                   <div>
                     <h3 className="text-lg font-semibold mb-4">
-                      Skeleton States
+                      {t('uiKit.loaders.skeletonStates')}
                     </h3>
                     <div className="space-y-3">
                       <Skeleton className="h-4 w-full" />
@@ -1006,34 +1182,43 @@ const UiKit = () => {
 
             {/* Dialog Section */}
             <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-b-0 p-4">
-              <h2 className="text-2xl font-semibold mb-6">Dialog</h2>
+              <h2 className="text-2xl font-semibold mb-6">
+                {t('uiKit.dialog.title')}
+              </h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
-                  <CardTitle>Dialog</CardTitle>
-                  <CardDescription>Modal dialog examples</CardDescription>
+                  <CardTitle>{t('uiKit.dialog.cardTitle')}</CardTitle>
+                  <CardDescription>
+                    {t('uiKit.dialog.cardDescription')}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-3">
                     <Dialog>
                       <DialogTrigger asChild>
-                        <Button variant="outline">Open Dialog</Button>
+                        <Button variant="outline">
+                          {t('uiKit.dialog.openDialog')}
+                        </Button>
                       </DialogTrigger>
                       <DialogContent>
                         <DialogHeader>
-                          <DialogTitle>Dialog Title</DialogTitle>
+                          <DialogTitle>
+                            {t('uiKit.dialog.dialogTitle')}
+                          </DialogTitle>
                           <DialogDescription>
-                            This is a dialog description that explains the
-                            purpose of the dialog.
+                            {t('uiKit.dialog.dialogDescription')}
                           </DialogDescription>
                         </DialogHeader>
                         <div className="py-4">
                           <p className="text-sm text-muted-foreground">
-                            Dialog body content goes here.
+                            {t('uiKit.dialog.dialogBody')}
                           </p>
                         </div>
                         <DialogFooter>
-                          <Button variant="outline">Cancel</Button>
-                          <Button>Confirm</Button>
+                          <Button variant="outline">
+                            {t('uiKit.dialog.cancel')}
+                          </Button>
+                          <Button>{t('uiKit.dialog.confirm')}</Button>
                         </DialogFooter>
                       </DialogContent>
                     </Dialog>
@@ -1044,30 +1229,39 @@ const UiKit = () => {
 
             {/* Alert Dialog Section */}
             <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-b-0 p-4">
-              <h2 className="text-2xl font-semibold mb-6">Alert Dialog</h2>
+              <h2 className="text-2xl font-semibold mb-6">
+                {t('uiKit.alertDialog.title')}
+              </h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
-                  <CardTitle>Alert Dialog</CardTitle>
+                  <CardTitle>{t('uiKit.alertDialog.cardTitle')}</CardTitle>
                   <CardDescription>
-                    Confirmation dialogs for destructive actions
+                    {t('uiKit.alertDialog.cardDescription')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <AlertDialog>
                     <AlertDialogTrigger asChild>
-                      <Button variant="destructive">Delete Item</Button>
+                      <Button variant="destructive">
+                        {t('uiKit.alertDialog.deleteItem')}
+                      </Button>
                     </AlertDialogTrigger>
                     <AlertDialogContent>
                       <AlertDialogHeader>
-                        <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                        <AlertDialogTitle>
+                          {t('uiKit.alertDialog.areYouSure')}
+                        </AlertDialogTitle>
                         <AlertDialogDescription>
-                          This action cannot be undone. This will permanently
-                          delete the item.
+                          {t('uiKit.alertDialog.deleteWarning')}
                         </AlertDialogDescription>
                       </AlertDialogHeader>
                       <AlertDialogFooter>
-                        <AlertDialogCancel>Cancel</AlertDialogCancel>
-                        <AlertDialogAction>Continue</AlertDialogAction>
+                        <AlertDialogCancel>
+                          {t('uiKit.alertDialog.cancel')}
+                        </AlertDialogCancel>
+                        <AlertDialogAction>
+                          {t('uiKit.alertDialog.continue')}
+                        </AlertDialogAction>
                       </AlertDialogFooter>
                     </AlertDialogContent>
                   </AlertDialog>
@@ -1077,36 +1271,44 @@ const UiKit = () => {
 
             {/* Sheet Section */}
             <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-b-0 p-4">
-              <h2 className="text-2xl font-semibold mb-6">Sheet</h2>
+              <h2 className="text-2xl font-semibold mb-6">
+                {t('uiKit.sheet.title')}
+              </h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
-                  <CardTitle>Sheet</CardTitle>
-                  <CardDescription>Side panel overlays</CardDescription>
+                  <CardTitle>{t('uiKit.sheet.cardTitle')}</CardTitle>
+                  <CardDescription>
+                    {t('uiKit.sheet.cardDescription')}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-3">
                     <Sheet>
                       <SheetTrigger asChild>
-                        <Button variant="outline">Open Right</Button>
+                        <Button variant="outline">
+                          {t('uiKit.sheet.openRight')}
+                        </Button>
                       </SheetTrigger>
                       <SheetContent>
                         <SheetHeader>
-                          <SheetTitle>Sheet Title</SheetTitle>
+                          <SheetTitle>{t('uiKit.sheet.sheetTitle')}</SheetTitle>
                           <SheetDescription>
-                            This is a sheet that slides in from the right.
+                            {t('uiKit.sheet.sheetDescription')}
                           </SheetDescription>
                         </SheetHeader>
                       </SheetContent>
                     </Sheet>
                     <Sheet>
                       <SheetTrigger asChild>
-                        <Button variant="outline">Open Left</Button>
+                        <Button variant="outline">
+                          {t('uiKit.sheet.openLeft')}
+                        </Button>
                       </SheetTrigger>
                       <SheetContent side="left">
                         <SheetHeader>
-                          <SheetTitle>Left Sheet</SheetTitle>
+                          <SheetTitle>{t('uiKit.sheet.leftSheet')}</SheetTitle>
                           <SheetDescription>
-                            This sheet slides in from the left.
+                            {t('uiKit.sheet.leftSheetDescription')}
                           </SheetDescription>
                         </SheetHeader>
                       </SheetContent>
@@ -1118,26 +1320,40 @@ const UiKit = () => {
 
             {/* Dropdown Menu Section */}
             <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-b-0 p-4">
-              <h2 className="text-2xl font-semibold mb-6">Dropdown Menu</h2>
+              <h2 className="text-2xl font-semibold mb-6">
+                {t('uiKit.dropdownMenu.title')}
+              </h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
-                  <CardTitle>Dropdown Menu</CardTitle>
-                  <CardDescription>Context and action menus</CardDescription>
+                  <CardTitle>{t('uiKit.dropdownMenu.cardTitle')}</CardTitle>
+                  <CardDescription>
+                    {t('uiKit.dropdownMenu.cardDescription')}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button variant="outline">Open Menu</Button>
+                      <Button variant="outline">
+                        {t('uiKit.dropdownMenu.openMenu')}
+                      </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
-                      <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                      <DropdownMenuLabel>
+                        {t('uiKit.dropdownMenu.actions')}
+                      </DropdownMenuLabel>
                       <DropdownMenuSeparator />
-                      <DropdownMenuItem>Profile</DropdownMenuItem>
-                      <DropdownMenuItem>Settings</DropdownMenuItem>
-                      <DropdownMenuItem>Billing</DropdownMenuItem>
+                      <DropdownMenuItem>
+                        {t('uiKit.dropdownMenu.profile')}
+                      </DropdownMenuItem>
+                      <DropdownMenuItem>
+                        {t('uiKit.dropdownMenu.settings')}
+                      </DropdownMenuItem>
+                      <DropdownMenuItem>
+                        {t('uiKit.dropdownMenu.billing')}
+                      </DropdownMenuItem>
                       <DropdownMenuSeparator />
                       <DropdownMenuItem variant="destructive">
-                        Log out
+                        {t('uiKit.dropdownMenu.logOut')}
                       </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
@@ -1147,27 +1363,35 @@ const UiKit = () => {
 
             {/* Breadcrumb Section */}
             <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-b-0 p-4">
-              <h2 className="text-2xl font-semibold mb-6">Breadcrumb</h2>
+              <h2 className="text-2xl font-semibold mb-6">
+                {t('uiKit.breadcrumb.title')}
+              </h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
-                  <CardTitle>Breadcrumb</CardTitle>
+                  <CardTitle>{t('uiKit.breadcrumb.cardTitle')}</CardTitle>
                   <CardDescription>
-                    Navigation breadcrumb trails
+                    {t('uiKit.breadcrumb.cardDescription')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Breadcrumb>
                     <BreadcrumbList>
                       <BreadcrumbItem>
-                        <BreadcrumbLink href="#">Home</BreadcrumbLink>
+                        <BreadcrumbLink href="#">
+                          {t('uiKit.breadcrumb.home')}
+                        </BreadcrumbLink>
                       </BreadcrumbItem>
                       <BreadcrumbSeparator />
                       <BreadcrumbItem>
-                        <BreadcrumbLink href="#">Components</BreadcrumbLink>
+                        <BreadcrumbLink href="#">
+                          {t('uiKit.breadcrumb.components')}
+                        </BreadcrumbLink>
                       </BreadcrumbItem>
                       <BreadcrumbSeparator />
                       <BreadcrumbItem>
-                        <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+                        <BreadcrumbPage>
+                          {t('uiKit.breadcrumb.cardTitle')}
+                        </BreadcrumbPage>
                       </BreadcrumbItem>
                     </BreadcrumbList>
                   </Breadcrumb>
@@ -1177,29 +1401,43 @@ const UiKit = () => {
 
             {/* Separator Section */}
             <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-b-0 p-4">
-              <h2 className="text-2xl font-semibold mb-6">Separator</h2>
+              <h2 className="text-2xl font-semibold mb-6">
+                {t('uiKit.separator.title')}
+              </h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
-                  <CardTitle>Separator</CardTitle>
+                  <CardTitle>{t('uiKit.separator.cardTitle')}</CardTitle>
                   <CardDescription>
-                    Visual dividers between content
+                    {t('uiKit.separator.cardDescription')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div>
-                    <h3 className="text-lg font-semibold mb-3">Horizontal</h3>
+                    <h3 className="text-lg font-semibold mb-3">
+                      {t('uiKit.separator.horizontal')}
+                    </h3>
                     <div className="space-y-3">
-                      <p className="text-sm">Content above</p>
+                      <p className="text-sm">
+                        {t('uiKit.separator.contentAbove')}
+                      </p>
                       <Separator />
-                      <p className="text-sm">Content below</p>
+                      <p className="text-sm">
+                        {t('uiKit.separator.contentBelow')}
+                      </p>
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold mb-3">Vertical</h3>
+                    <h3 className="text-lg font-semibold mb-3">
+                      {t('uiKit.separator.vertical')}
+                    </h3>
                     <div className="flex items-center gap-3 h-6">
-                      <span className="text-sm">Left</span>
+                      <span className="text-sm">
+                        {t('uiKit.separator.left')}
+                      </span>
                       <Separator orientation="vertical" />
-                      <span className="text-sm">Right</span>
+                      <span className="text-sm">
+                        {t('uiKit.separator.right')}
+                      </span>
                     </div>
                   </div>
                 </CardContent>
@@ -1208,35 +1446,41 @@ const UiKit = () => {
 
             {/* Table Section */}
             <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-b-0 p-4">
-              <h2 className="text-2xl font-semibold mb-6">Table</h2>
+              <h2 className="text-2xl font-semibold mb-6">
+                {t('uiKit.table.title')}
+              </h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
-                  <CardTitle>Table</CardTitle>
-                  <CardDescription>Data table component</CardDescription>
+                  <CardTitle>{t('uiKit.table.cardTitle')}</CardTitle>
+                  <CardDescription>
+                    {t('uiKit.table.cardDescription')}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Table>
                     <TableHeader>
                       <TableRow>
-                        <TableHead>Name</TableHead>
-                        <TableHead>Status</TableHead>
-                        <TableHead className="text-end">Amount</TableHead>
+                        <TableHead>{t('uiKit.table.name')}</TableHead>
+                        <TableHead>{t('uiKit.table.status')}</TableHead>
+                        <TableHead className="text-end">
+                          {t('uiKit.table.amount')}
+                        </TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
                       <TableRow>
-                        <TableCell>John Doe</TableCell>
-                        <TableCell>Active</TableCell>
+                        <TableCell>{t('uiKit.table.johnDoe')}</TableCell>
+                        <TableCell>{t('uiKit.table.active')}</TableCell>
                         <TableCell className="text-end">$250.00</TableCell>
                       </TableRow>
                       <TableRow>
-                        <TableCell>Jane Smith</TableCell>
-                        <TableCell>Pending</TableCell>
+                        <TableCell>{t('uiKit.table.janeSmith')}</TableCell>
+                        <TableCell>{t('uiKit.table.pending')}</TableCell>
                         <TableCell className="text-end">$150.00</TableCell>
                       </TableRow>
                       <TableRow>
-                        <TableCell>Bob Johnson</TableCell>
-                        <TableCell>Inactive</TableCell>
+                        <TableCell>{t('uiKit.table.bobJohnson')}</TableCell>
+                        <TableCell>{t('uiKit.table.inactive')}</TableCell>
                         <TableCell className="text-end">$350.00</TableCell>
                       </TableRow>
                     </TableBody>
@@ -1247,17 +1491,21 @@ const UiKit = () => {
 
             {/* Input OTP Section */}
             <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-b-0 p-4">
-              <h2 className="text-2xl font-semibold mb-6">Input OTP</h2>
+              <h2 className="text-2xl font-semibold mb-6">
+                {t('uiKit.inputOtp.title')}
+              </h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
-                  <CardTitle>OTP Input</CardTitle>
+                  <CardTitle>{t('uiKit.inputOtp.cardTitle')}</CardTitle>
                   <CardDescription>
-                    One-time password input fields
+                    {t('uiKit.inputOtp.cardDescription')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div>
-                    <h3 className="text-lg font-semibold mb-3">6 Digits</h3>
+                    <h3 className="text-lg font-semibold mb-3">
+                      {t('uiKit.inputOtp.sixDigits')}
+                    </h3>
                     <InputOTP maxLength={6}>
                       <InputOTPGroup>
                         <InputOTPSlot index={0} />
@@ -1274,7 +1522,9 @@ const UiKit = () => {
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-semibold mb-3">4 Digits</h3>
+                    <h3 className="text-lg font-semibold mb-3">
+                      {t('uiKit.inputOtp.fourDigits')}
+                    </h3>
                     <InputOTP maxLength={4}>
                       <InputOTPGroup>
                         <InputOTPSlot index={0} />
@@ -1290,11 +1540,15 @@ const UiKit = () => {
 
             {/* Pagination Section */}
             <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-b-0 p-4">
-              <h2 className="text-2xl font-semibold mb-6">Pagination</h2>
+              <h2 className="text-2xl font-semibold mb-6">
+                {t('uiKit.pagination.title')}
+              </h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
-                  <CardTitle>Pagination</CardTitle>
-                  <CardDescription>Page navigation components</CardDescription>
+                  <CardTitle>{t('uiKit.pagination.cardTitle')}</CardTitle>
+                  <CardDescription>
+                    {t('uiKit.pagination.cardDescription')}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Pagination>
@@ -1327,33 +1581,40 @@ const UiKit = () => {
 
             {/* Typography Section */}
             <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-b-0 p-4">
-              <h2 className="text-2xl font-semibold mb-6">Typography</h2>
+              <h2 className="text-2xl font-semibold mb-6">
+                {t('uiKit.typography.title')}
+              </h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
-                  <CardTitle>Text Styles</CardTitle>
+                  <CardTitle>{t('uiKit.typography.cardTitle')}</CardTitle>
                   <CardDescription>
-                    Standard typography elements and their usage
+                    {t('uiKit.typography.cardDescription')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div>
-                    <h1 className="text-4xl font-bold">Heading 1</h1>
+                    <h1 className="text-4xl font-bold">
+                      {t('uiKit.typography.heading1')}
+                    </h1>
                   </div>
                   <div>
-                    <h2 className="text-3xl font-bold">Heading 2</h2>
+                    <h2 className="text-3xl font-bold">
+                      {t('uiKit.typography.heading2')}
+                    </h2>
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold">Heading 3</h3>
+                    <h3 className="text-2xl font-bold">
+                      {t('uiKit.typography.heading3')}
+                    </h3>
                   </div>
                   <div>
                     <p className="text-base">
-                      This is a regular paragraph with normal text weight and
-                      size.
+                      {t('uiKit.typography.paragraph')}
                     </p>
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">
-                      This is smaller text with muted foreground color.
+                      {t('uiKit.typography.mutedText')}
                     </p>
                   </div>
                 </CardContent>
@@ -1361,15 +1622,21 @@ const UiKit = () => {
             </section>
             {/* Slider Section */}
             <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-b-0 p-4">
-              <h2 className="text-2xl font-semibold mb-6">Slider</h2>
+              <h2 className="text-2xl font-semibold mb-6">
+                {t('uiKit.slider.title')}
+              </h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
-                  <CardTitle>Slider</CardTitle>
-                  <CardDescription>Range slider components</CardDescription>
+                  <CardTitle>{t('uiKit.slider.cardTitle')}</CardTitle>
+                  <CardDescription>
+                    {t('uiKit.slider.cardDescription')}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6 max-w-md">
                   <div>
-                    <h3 className="text-lg font-semibold mb-3">Default</h3>
+                    <h3 className="text-lg font-semibold mb-3">
+                      {t('uiKit.slider.default')}
+                    </h3>
                     <Slider
                       value={sliderValue}
                       onValueChange={setSliderValue}
@@ -1377,12 +1644,14 @@ const UiKit = () => {
                       step={1}
                     />
                     <p className="text-sm text-muted-foreground mt-2">
-                      Value: {sliderValue[0]}
+                      {t('uiKit.slider.value', { value: sliderValue[0] })}
                     </p>
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-semibold mb-3">With Steps</h3>
+                    <h3 className="text-lg font-semibold mb-3">
+                      {t('uiKit.slider.withSteps')}
+                    </h3>
                     <Slider defaultValue={[25]} max={100} step={25} />
                   </div>
 
@@ -1395,43 +1664,59 @@ const UiKit = () => {
             </section>
             {/* Radio Group Section */}
             <section className="border-dashed border border-l-0 rtl:border-l rtl:border-r-0 border-b p-4">
-              <h2 className="text-2xl font-semibold mb-6">Radio Group</h2>
+              <h2 className="text-2xl font-semibold mb-6">
+                {t('uiKit.radioGroup.title')}
+              </h2>
               <Card className="border-0 rounded-none shadow-none">
                 <CardHeader>
-                  <CardTitle>Radio Group</CardTitle>
+                  <CardTitle>{t('uiKit.radioGroup.cardTitle')}</CardTitle>
                   <CardDescription>
-                    Radio button groups for single selection
+                    {t('uiKit.radioGroup.cardDescription')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div>
-                    <h3 className="text-lg font-semibold mb-3">Default</h3>
+                    <h3 className="text-lg font-semibold mb-3">
+                      {t('uiKit.radioGroup.default')}
+                    </h3>
                     <RadioGroup defaultValue="option-1">
                       <div className="flex items-center gap-3">
                         <RadioGroupItem value="option-1" id="radio-1" />
-                        <Label htmlFor="radio-1">Option One</Label>
+                        <Label htmlFor="radio-1">
+                          {t('uiKit.radioGroup.optionOne')}
+                        </Label>
                       </div>
                       <div className="flex items-center gap-3">
                         <RadioGroupItem value="option-2" id="radio-2" />
-                        <Label htmlFor="radio-2">Option Two</Label>
+                        <Label htmlFor="radio-2">
+                          {t('uiKit.radioGroup.optionTwo')}
+                        </Label>
                       </div>
                       <div className="flex items-center gap-3">
                         <RadioGroupItem value="option-3" id="radio-3" />
-                        <Label htmlFor="radio-3">Option Three</Label>
+                        <Label htmlFor="radio-3">
+                          {t('uiKit.radioGroup.optionThree')}
+                        </Label>
                       </div>
                     </RadioGroup>
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-semibold mb-3">Disabled</h3>
+                    <h3 className="text-lg font-semibold mb-3">
+                      {t('uiKit.radioGroup.disabled')}
+                    </h3>
                     <RadioGroup defaultValue="disabled-1" disabled>
                       <div className="flex items-center gap-3">
                         <RadioGroupItem value="disabled-1" id="radio-d1" />
-                        <Label htmlFor="radio-d1">Disabled Selected</Label>
+                        <Label htmlFor="radio-d1">
+                          {t('uiKit.radioGroup.disabledSelected')}
+                        </Label>
                       </div>
                       <div className="flex items-center gap-3">
                         <RadioGroupItem value="disabled-2" id="radio-d2" />
-                        <Label htmlFor="radio-d2">Disabled</Label>
+                        <Label htmlFor="radio-d2">
+                          {t('uiKit.radioGroup.disabled')}
+                        </Label>
                       </div>
                     </RadioGroup>
                   </div>

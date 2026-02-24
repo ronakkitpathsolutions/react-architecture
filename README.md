@@ -14,6 +14,7 @@ An opinionated Vite + React + TypeScript starter with Tailwind v4, shadcn-style 
 - React Router for routing
 - React Hook Form & Zod for forms and validation
 - Error boundaries (global + component-level) with ShadCN fallback UI
+- Internationalization (i18n) with English, French, and Arabic (RTL) support
 - Scalable, clean project structure
 - Pre-configured ESLint, Prettier, Husky, lint-staged, and commitlint
 - Environment variable support
@@ -33,6 +34,7 @@ An opinionated Vite + React + TypeScript starter with Tailwind v4, shadcn-style 
 | Routing        | React Router                               |
 | Forms          | React Hook Form, Zod                       |
 | Error Handling | react-error-boundary                       |
+| i18n           | i18next, react-i18next, HTTP backend       |
 | Lint/Format    | ESLint, Prettier                           |
 | Git Hooks      | Husky, lint-staged, commitlint             |
 
@@ -41,6 +43,11 @@ An opinionated Vite + React + TypeScript starter with Tailwind v4, shadcn-style 
 ## 📁 Project Structure
 
 ```text
+public/
+  locales/
+    en/
+    fr/
+    ar/
 src/
   app.tsx
   main.tsx
@@ -57,8 +64,12 @@ src/
       error-fallback.tsx
       global-error-fallback.tsx
       error-logger.ts
+    language-selector/
     ui/
   hooks/
+  i18n/
+    index.ts
+    types.d.ts
   layouts/
   pages/
     404/
@@ -74,6 +85,7 @@ src/
       reset-password/
     error/
     web/
+      error-boundary/
       home/
       privacy-policy/
       terms-of-services/
@@ -270,6 +282,68 @@ import { ComponentErrorBoundary } from '@/components/error-boundary';
 | `pages/error/index.tsx`        | Standalone error page for route-level error states              |
 
 > In development mode, error details (name + message) are displayed in the fallback UI for easier debugging.
+
+---
+
+## 🌐 Internationalization (i18n)
+
+The project ships with full internationalization powered by [i18next](https://www.i18next.com/) and [react-i18next](https://react.i18next.com/).
+
+### Supported Languages
+
+| Language | Code | Direction |
+| -------- | ---- | --------- |
+| English  | `en` | LTR       |
+| Français | `fr` | LTR       |
+| العربية  | `ar` | RTL       |
+
+### How It Works
+
+1. **Translation files** live in `public/locales/{lng}/{ns}.json` and are loaded at runtime via `i18next-http-backend`.
+2. **Language detection** uses `i18next-browser-languagedetector` (checks `localStorage` → browser language → `<html lang>`).
+3. **RTL support** — When the language changes, the `dir` and `lang` attributes on `<html>` are updated automatically, so Tailwind's `rtl:` / `ltr:` utilities work out of the box.
+4. **Type-safe keys** — `src/i18n/types.d.ts` augments i18next's `CustomTypeOptions` to infer key types from the English JSON files, giving full autocompletion in `t()` calls.
+
+### Namespaces
+
+| Namespace     | File               | Purpose                         |
+| ------------- | ------------------ | ------------------------------- |
+| `translation` | `translation.json` | Default — all page/UI strings   |
+| `common`      | `common.json`      | Shared strings (logo, app name) |
+
+### Usage
+
+```tsx
+import useT from '@/hooks/use-translation';
+
+const MyComponent = () => {
+  const t = useT(); // default namespace
+  // const t = useT('common') // explicit namespace
+
+  return <h1>{t('uiKit.title')}</h1>;
+};
+```
+
+### Language Selector
+
+A ready-made `<LanguageSelector />` dropdown (shadcn `DropdownMenu`) is provided at `src/components/language-selector/`. It lists all configured languages and highlights the active one.
+
+### i18n Configuration Files
+
+| File / Folder                       | Purpose                                              |
+| ----------------------------------- | ---------------------------------------------------- |
+| `public/locales/{en,fr,ar}/*.json`  | Translation JSON files per language and namespace    |
+| `src/i18n/index.ts`                 | i18next initialization and configuration             |
+| `src/i18n/types.d.ts`               | TypeScript module augmentation for type-safe keys    |
+| `src/hooks/use-translation.ts`      | `useT()` — type-safe wrapper around `useTranslation` |
+| `src/utils/constants/languages.ts`  | Language list, RTL list, namespace constants         |
+| `src/components/language-selector/` | Language switcher UI component                       |
+
+### Adding a New Language
+
+1. Create a new folder under `public/locales/` (e.g. `es/`) with `translation.json` and `common.json`.
+2. Add the language entry to the `LANGUAGES` and `SUPPORTED_LANGS` arrays in `src/utils/constants/languages.ts`.
+3. If the language is RTL, add its code to the `RTL_LANGS` array.
 
 ---
 
