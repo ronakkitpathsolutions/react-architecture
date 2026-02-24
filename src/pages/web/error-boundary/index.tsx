@@ -10,15 +10,15 @@ import {
 } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import ICONS from '@/assets/icons';
+import useT from '@/hooks/use-translation';
 
 // ─── Buggy component that throws on demand ─────────────────
 const BuggyCounter = () => {
+  const t = useT();
   const [count, setCount] = useState(0);
 
   if (count === 3) {
-    throw new Error(
-      'Counter crashed! The component threw an error when count reached 3.',
-    );
+    throw new Error(t('errorBoundary.buggyCounter.errorMessage'));
   }
 
   return (
@@ -26,17 +26,17 @@ const BuggyCounter = () => {
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <ICONS.Bug className="size-5 text-destructive" />
-          Buggy Counter
+          {t('errorBoundary.buggyCounter.title')}
         </CardTitle>
         <CardDescription>
-          Click the button below. The component will crash when the count
-          reaches <strong>3</strong>.
+          {t('errorBoundary.buggyCounter.descriptionPrefix')} <strong>3</strong>
+          {t('errorBoundary.buggyCounter.descriptionSuffix')}
         </CardDescription>
       </CardHeader>
       <CardFooter className="flex items-center justify-between">
         <p className="text-2xl font-bold tabular-nums">{count}</p>
         <Button variant="destructive" onClick={() => setCount((c) => c + 1)}>
-          Increment ({count}/3)
+          {t('errorBoundary.buggyCounter.increment', { count })}
         </Button>
       </CardFooter>
     </Card>
@@ -45,22 +45,21 @@ const BuggyCounter = () => {
 
 // ─── Safe component ─────────────────────────────────────────
 const SafeWidget = () => {
+  const t = useT();
   return (
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <ICONS.ShieldCheck className="size-5 text-green-600" />
-          Safe Widget
+          {t('errorBoundary.safeWidget.title')}
         </CardTitle>
         <CardDescription>
-          This component is unaffected by the crash above. It continues working
-          because it lives outside the errored boundary.
+          {t('errorBoundary.safeWidget.description')}
         </CardDescription>
       </CardHeader>
       <CardFooter>
         <p className="text-sm text-muted-foreground">
-          Component-level error boundaries isolate failures so the rest of the
-          page still works.
+          {t('errorBoundary.safeWidget.footer')}
         </p>
       </CardFooter>
     </Card>
@@ -69,16 +68,17 @@ const SafeWidget = () => {
 
 // ─── Page ───────────────────────────────────────────────────
 const ErrorBoundaryDemo = () => {
+  const t = useT();
   return (
     <div className="flex w-full flex-col h-[calc(100vh-66px)] border-t border-dashed">
       <div className="mx-auto w-full max-w-7xl border border-t-0 border-b-0 border-dashed">
         <div className="w-full max-w-3xl space-y-6 px-4 py-12 mx-auto">
           <div className="space-y-2 text-center">
             <h1 className="text-3xl font-bold tracking-tight">
-              Error Boundary Demo
+              {t('errorBoundary.title')}
             </h1>
             <p className="text-muted-foreground">
-              See how{' '}
+              {t('errorBoundary.descriptionPrefix')}{' '}
               <code
                 onClick={() =>
                   window.open(
@@ -87,26 +87,26 @@ const ErrorBoundaryDemo = () => {
                 }
                 className="text-sm font-semibold cursor-pointer text-cyan-500 dark:text-cyan-600"
               >
-                react-error-boundary
+                {t('errorBoundary.descriptionLib')}
               </code>{' '}
-              catches component errors without crashing the entire application.
+              {t('errorBoundary.descriptionSuffix')}
             </p>
           </div>
 
           {/* How it works */}
           <Alert>
             <ICONS.ShieldAlert className="size-4" />
-            <AlertTitle>How it works</AlertTitle>
+            <AlertTitle>{t('errorBoundary.howItWorks')}</AlertTitle>
             <AlertDescription className="mt-1 space-y-1 text-sm">
               <p>
-                <strong>Global Error Boundary</strong> — wraps the entire app in{' '}
-                <code>main.tsx</code>. Catches any unhandled error and shows a
-                full-page fallback.
+                <strong>{t('errorBoundary.globalBoundary')}</strong> —{' '}
+                {t('errorBoundary.globalBoundaryPrefix')}{' '}
+                <code>{t('errorBoundary.globalBoundaryFile')}</code>
+                {t('errorBoundary.globalBoundarySuffix')}
               </p>
               <p>
-                <strong>Component Error Boundary</strong> — wraps individual
-                sections. Only the wrapped section shows a fallback; the rest of
-                the page keeps working.
+                <strong>{t('errorBoundary.componentBoundary')}</strong> —{' '}
+                {t('errorBoundary.componentBoundaryDesc')}
               </p>
             </AlertDescription>
           </Alert>
@@ -125,12 +125,13 @@ const ErrorBoundaryDemo = () => {
           {/* Instructions */}
           <Alert variant="destructive">
             <ICONS.AlertCircle className="size-4" />
-            <AlertTitle>Try it out</AlertTitle>
+            <AlertTitle>{t('errorBoundary.tryItOut')}</AlertTitle>
             <AlertDescription className="mt-1 text-sm">
-              Click <strong>"Increment"</strong> until the counter reaches 3.
-              The left card will crash and show a fallback with a{' '}
-              <strong>"Try again"</strong> button, while the right card remains
-              untouched.
+              {t('errorBoundary.tryItOutPrefix')}{' '}
+              <strong>{t('errorBoundary.tryItOutIncrement')}</strong>{' '}
+              {t('errorBoundary.tryItOutMiddle')}{' '}
+              <strong>{t('errorBoundary.tryItOutTryAgain')}</strong>{' '}
+              {t('errorBoundary.tryItOutSuffix')}
             </AlertDescription>
           </Alert>
         </div>
