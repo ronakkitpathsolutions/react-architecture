@@ -4,7 +4,7 @@ import fs from 'fs';
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
 
-const model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro' });
+const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
 // Allowed extensions
 const ALLOWED_EXT = ['.ts', '.tsx', '.js'];
