@@ -35,7 +35,7 @@ jobs:
 
       # 5️⃣ Run Gemini Review Script
       - name: Run Gemini Review
-        run: node .github/scripts/gemini-review.js
+        run: node .github/scripts/gemini-review.ts
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GITHUB_BASE_REF: ${{ github.base_ref }}
